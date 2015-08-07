@@ -6,14 +6,6 @@ from .models import Category
 class PostAdmin(admin.ModelAdmin):
     list_display = ('author', 'title', 'created_date','published_date', )
     
-    def anartz (self):
-        return "1"
-
-        
-
-
-
-
 admin.site.register(Post, PostAdmin)
 #Add create model in admin site to show
 admin.site.register(Category)
