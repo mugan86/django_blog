@@ -2,6 +2,18 @@ from django.contrib import admin
 from .models import Post
 from .models import Category
 
-admin.site.register(Post)
+
+class PostAdmin(admin.ModelAdmin):
+    list_display = ('author', 'title', 'created_date','published_date', )
+    
+    def anartz (self):
+        return "1"
+
+        
+
+
+
+
+admin.site.register(Post, PostAdmin)
 #Add create model in admin site to show
 admin.site.register(Category)
