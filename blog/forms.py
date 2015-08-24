@@ -5,4 +5,5 @@ class PostForm(forms.ModelForm):
 
     class Meta:
         model = Post
-        fields = ('title', 'text')
+        # Fields to show in form
+        fields = ('title', 'description', 'text')
