@@ -79,6 +79,10 @@ python manage.py runserver
 
 Input 127.0.0.1:8000 in web browser
 
+###Template:
+```sh
+Template download from http://startbootstrap.com/template-overviews/clean-blog/
+```
 
 
 
