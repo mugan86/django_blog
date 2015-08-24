@@ -3,14 +3,26 @@
  {% block content %}
 
     {% for post in posts %}
-    <div class="panel panel-default">
+
+    <div class="post-preview">
+        <a href="{% url "blog.views.post_detail" pk=post.pk %}">
+            <h2 class="post-title">
+                {{ post.title }}
+            </h2>
+            <h3 class="post-subtitle">
+                Problems look mighty small from 150 miles up
+            </h3>
+        </a>
+        <p class="post-meta">Posted by <a href="#">{{ post.author }}</a> on {{ post.published_date }}</p>
+    </div>
+    <!--<div class="panel panel-default">
             <div class="page-header">
                 <h1><a href="{% url "blog.views.post_detail" pk=post.pk %}">{{ post.title }}</a></h1>
             </div>
-             <div class="post"> 
+             <div class="post">
                 <p>published: {{ post.published_date }}</p>
                 <p>{{ post.text|linebreaks }}</p>
              </div>
-    </div>
+    </div>-->
     {% endfor %}
 {% endblock content %}
