@@ -1,7 +1,7 @@
 {% load staticfiles %}
 <html>
     <head>
-        <title>Mi Blog example</title>
+        <title>Anartz Mugika - Blog</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
@@ -33,7 +33,7 @@
                       <span class="icon-bar"></span>
                       <span class="icon-bar"></span>
                   </button>
-                  <a class="navbar-brand" href="/">Start Bootstrap</a>
+                  <a class="navbar-brand" href="/">Anartz Mugika</a>
               </div>
 
               <!-- Collect the nav links, forms, and other content for toggling -->
@@ -47,13 +47,19 @@
                       </li>
                       <!--<li>
                           <a href="">Test</a>
-                      </li>
-                      <li>
-                          <a a href="{% url "blog.views.post_new" %}">New Post</a>
                       </li>-->
                       <li>
                           <a href="/contact">Contact</a>
                       </li>
+                      {% if user.is_authenticated %}
+                      <li>
+                          <a a href="{% url "blog.views.post_new" %}">New Post</a>
+                      </li>
+                      <!--{% else %}
+                      <li>
+                          <a href="/admin">Login</a>
+                      </li>-->
+                      {% endif %}
                   </ul>
               </div>
               <!-- /.navbar-collapse -->
