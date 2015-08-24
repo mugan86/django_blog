@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.2.7.1
+-- version 4.2.11
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 23-08-2015 a las 19:18:36
--- Versión del servidor: 5.5.39
--- Versión de PHP: 5.4.31
+-- Tiempo de generación: 24-08-2015 a las 11:35:04
+-- Versión del servidor: 5.6.21
+-- Versión de PHP: 5.5.19
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -31,7 +31,7 @@ USE `django`;
 CREATE TABLE IF NOT EXISTS `auth_group` (
 `id` int(11) NOT NULL,
   `name` varchar(80) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -43,7 +43,7 @@ CREATE TABLE IF NOT EXISTS `auth_group_permissions` (
 `id` int(11) NOT NULL,
   `group_id` int(11) NOT NULL,
   `permission_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -56,7 +56,7 @@ CREATE TABLE IF NOT EXISTS `auth_permission` (
   `name` varchar(255) NOT NULL,
   `content_type_id` int(11) NOT NULL,
   `codename` varchar(100) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=25 ;
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `auth_permission`
@@ -106,14 +106,14 @@ CREATE TABLE IF NOT EXISTS `auth_user` (
   `is_staff` tinyint(1) NOT NULL,
   `is_active` tinyint(1) NOT NULL,
   `date_joined` datetime NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `auth_user`
 --
 
 INSERT IGNORE INTO `auth_user` (`id`, `password`, `last_login`, `is_superuser`, `username`, `first_name`, `last_name`, `email`, `is_staff`, `is_active`, `date_joined`) VALUES
-(1, 'pbkdf2_sha256$20000$Nj5hk6pve2Jp$Dm1nYPBLwzt25sMLCGMRmdTc2aHKtmM57/yZq1+HIGg=', '2015-08-22 07:46:32', 1, 'anartzmugika', '', '', 'amugika@codesyntax.com', 1, 1, '2015-08-22 07:37:29');
+(1, 'pbkdf2_sha256$20000$Nj5hk6pve2Jp$Dm1nYPBLwzt25sMLCGMRmdTc2aHKtmM57/yZq1+HIGg=', '2015-08-24 05:25:05', 1, 'anartzmugika', '', '', 'amugika@codesyntax.com', 1, 1, '2015-08-22 07:37:29');
 
 -- --------------------------------------------------------
 
@@ -125,7 +125,7 @@ CREATE TABLE IF NOT EXISTS `auth_user_groups` (
 `id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
   `group_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -137,7 +137,7 @@ CREATE TABLE IF NOT EXISTS `auth_user_user_permissions` (
 `id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
   `permission_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -152,7 +152,7 @@ CREATE TABLE IF NOT EXISTS `blog_category` (
   `created_date` datetime NOT NULL,
   `published_date` datetime NOT NULL,
   `author_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -166,16 +166,21 @@ CREATE TABLE IF NOT EXISTS `blog_post` (
   `text` longtext NOT NULL,
   `created_date` datetime NOT NULL,
   `published_date` datetime NOT NULL,
-  `author_id` int(11) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
+  `author_id` int(11) NOT NULL,
+  `description` varchar(200) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `blog_post`
 --
 
-INSERT IGNORE INTO `blog_post` (`id`, `title`, `text`, `created_date`, `published_date`, `author_id`) VALUES
-(3, 'dddd', 'dddd', '2015-08-22 07:47:53', '2015-08-22 07:47:53', 1),
-(4, 'Test', 'Tesklañañañañañaa', '2015-08-22 07:53:16', '2015-08-22 07:53:16', 1);
+INSERT IGNORE INTO `blog_post` (`id`, `title`, `text`, `created_date`, `published_date`, `author_id`, `description`) VALUES
+(3, 'dddd', 'ddddssssssssaaaaa', '2015-08-22 07:47:53', '2015-08-22 07:47:53', 1, 'Description'),
+(4, 'Test', 'Tesklañañañañañaa', '2015-08-22 07:53:16', '2015-08-22 07:53:16', 1, 'Description'),
+(5, 'sss', 'ssss', '2015-08-24 05:25:30', '2015-08-24 05:25:30', 1, 'Description'),
+(6, 'Test', 'tettstss', '2015-08-24 07:04:05', '2015-08-24 07:04:05', 1, 'Description'),
+(7, 'aaaaa', 'aaaaa', '2015-08-24 07:20:20', '2015-08-24 07:20:20', 1, 'Description222222'),
+(8, 'New post with description', 'sjsjsjsjsjsjss', '2015-08-24 07:54:55', '2015-08-24 07:54:55', 1, 'Some description to post....111113333');
 
 -- --------------------------------------------------------
 
@@ -192,7 +197,7 @@ CREATE TABLE IF NOT EXISTS `django_admin_log` (
   `change_message` longtext NOT NULL,
   `content_type_id` int(11) DEFAULT NULL,
   `user_id` int(11) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `django_admin_log`
@@ -201,7 +206,9 @@ CREATE TABLE IF NOT EXISTS `django_admin_log` (
 INSERT IGNORE INTO `django_admin_log` (`id`, `action_time`, `object_id`, `object_repr`, `action_flag`, `change_message`, `content_type_id`, `user_id`) VALUES
 (1, '2015-08-22 07:46:46', '1', 'Teest', 1, '', 7, 1),
 (2, '2015-08-22 07:47:45', '2', 'cccc', 3, '', 7, 1),
-(3, '2015-08-22 07:47:45', '1', 'Teest', 3, '', 7, 1);
+(3, '2015-08-22 07:47:45', '1', 'Teest', 3, '', 7, 1),
+(4, '2015-08-24 07:04:18', '6', 'Test', 1, '', 7, 1),
+(5, '2015-08-24 07:55:29', '8', 'New post with description', 1, '', 7, 1);
 
 -- --------------------------------------------------------
 
@@ -213,7 +220,7 @@ CREATE TABLE IF NOT EXISTS `django_content_type` (
 `id` int(11) NOT NULL,
   `app_label` varchar(100) NOT NULL,
   `model` varchar(100) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=9 ;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `django_content_type`
@@ -240,7 +247,7 @@ CREATE TABLE IF NOT EXISTS `django_migrations` (
   `app` varchar(255) NOT NULL,
   `name` varchar(255) NOT NULL,
   `applied` datetime NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=14 ;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `django_migrations`
@@ -259,7 +266,8 @@ INSERT IGNORE INTO `django_migrations` (`id`, `app`, `name`, `applied`) VALUES
 (10, 'blog', '0001_initial', '2015-08-22 07:36:50'),
 (11, 'blog', '0002_category', '2015-08-22 07:36:50'),
 (12, 'blog', '0003_auto_20150807_1140', '2015-08-22 07:36:51'),
-(13, 'sessions', '0001_initial', '2015-08-22 07:36:52');
+(13, 'sessions', '0001_initial', '2015-08-22 07:36:52'),
+(14, 'blog', '0004_post_description', '2015-08-24 07:52:52');
 
 -- --------------------------------------------------------
 
@@ -278,7 +286,8 @@ CREATE TABLE IF NOT EXISTS `django_session` (
 --
 
 INSERT IGNORE INTO `django_session` (`session_key`, `session_data`, `expire_date`) VALUES
-('8lcfzx2z6bgj4uppozvrnnjdcxxoeyag', 'MWIyZWQwNTRjZmMxMDRlN2ZhNjkzNDRjZjRlM2EyOTFhYTJjM2QwMTp7Il9hdXRoX3VzZXJfaGFzaCI6IjM3MDM2YThkZTY0N2YyYzAwNjU5ZjA3YjdiYzViMjJkMDM5NDdlYjUiLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZCIsIl9hdXRoX3VzZXJfaWQiOiIxIn0=', '2015-09-05 07:46:32');
+('8lcfzx2z6bgj4uppozvrnnjdcxxoeyag', 'MWIyZWQwNTRjZmMxMDRlN2ZhNjkzNDRjZjRlM2EyOTFhYTJjM2QwMTp7Il9hdXRoX3VzZXJfaGFzaCI6IjM3MDM2YThkZTY0N2YyYzAwNjU5ZjA3YjdiYzViMjJkMDM5NDdlYjUiLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZCIsIl9hdXRoX3VzZXJfaWQiOiIxIn0=', '2015-09-05 07:46:32'),
+('yk4sq3tb85qkljukho1cqtnk6v7mgxqe', 'MWIyZWQwNTRjZmMxMDRlN2ZhNjkzNDRjZjRlM2EyOTFhYTJjM2QwMTp7Il9hdXRoX3VzZXJfaGFzaCI6IjM3MDM2YThkZTY0N2YyYzAwNjU5ZjA3YjdiYzViMjJkMDM5NDdlYjUiLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZCIsIl9hdXRoX3VzZXJfaWQiOiIxIn0=', '2015-09-07 05:25:05');
 
 --
 -- Índices para tablas volcadas
@@ -399,12 +408,12 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 -- AUTO_INCREMENT de la tabla `blog_post`
 --
 ALTER TABLE `blog_post`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT de la tabla `django_admin_log`
 --
 ALTER TABLE `django_admin_log`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT de la tabla `django_content_type`
 --
@@ -414,7 +423,7 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
 -- AUTO_INCREMENT de la tabla `django_migrations`
 --
 ALTER TABLE `django_migrations`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=14;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=15;
 --
 -- Restricciones para tablas volcadas
 --
@@ -423,8 +432,8 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=14;
 -- Filtros para la tabla `auth_group_permissions`
 --
 ALTER TABLE `auth_group_permissions`
-ADD CONSTRAINT `auth_group_permission_group_id_689710a9a73b7457_fk_auth_group_id` FOREIGN KEY (`group_id`) REFERENCES `auth_group` (`id`),
-ADD CONSTRAINT `auth_group__permission_id_1f49ccbbdc69d2fc_fk_auth_permission_id` FOREIGN KEY (`permission_id`) REFERENCES `auth_permission` (`id`);
+ADD CONSTRAINT `auth_group__permission_id_1f49ccbbdc69d2fc_fk_auth_permission_id` FOREIGN KEY (`permission_id`) REFERENCES `auth_permission` (`id`),
+ADD CONSTRAINT `auth_group_permission_group_id_689710a9a73b7457_fk_auth_group_id` FOREIGN KEY (`group_id`) REFERENCES `auth_group` (`id`);
 
 --
 -- Filtros para la tabla `auth_permission`
@@ -443,8 +452,8 @@ ADD CONSTRAINT `auth_user_groups_user_id_4b5ed4ffdb8fd9b0_fk_auth_user_id` FOREI
 -- Filtros para la tabla `auth_user_user_permissions`
 --
 ALTER TABLE `auth_user_user_permissions`
-ADD CONSTRAINT `auth_user_user_permissi_user_id_7f0938558328534a_fk_auth_user_id` FOREIGN KEY (`user_id`) REFERENCES `auth_user` (`id`),
-ADD CONSTRAINT `auth_user_u_permission_id_384b62483d7071f0_fk_auth_permission_id` FOREIGN KEY (`permission_id`) REFERENCES `auth_permission` (`id`);
+ADD CONSTRAINT `auth_user_u_permission_id_384b62483d7071f0_fk_auth_permission_id` FOREIGN KEY (`permission_id`) REFERENCES `auth_permission` (`id`),
+ADD CONSTRAINT `auth_user_user_permissi_user_id_7f0938558328534a_fk_auth_user_id` FOREIGN KEY (`user_id`) REFERENCES `auth_user` (`id`);
 
 --
 -- Filtros para la tabla `blog_category`
@@ -462,8 +471,8 @@ ADD CONSTRAINT `blog_post_author_id_5d99f39cce94a67b_fk_auth_user_id` FOREIGN KE
 -- Filtros para la tabla `django_admin_log`
 --
 ALTER TABLE `django_admin_log`
-ADD CONSTRAINT `django_admin_log_user_id_52fdd58701c5f563_fk_auth_user_id` FOREIGN KEY (`user_id`) REFERENCES `auth_user` (`id`),
-ADD CONSTRAINT `djang_content_type_id_697914295151027a_fk_django_content_type_id` FOREIGN KEY (`content_type_id`) REFERENCES `django_content_type` (`id`);
+ADD CONSTRAINT `djang_content_type_id_697914295151027a_fk_django_content_type_id` FOREIGN KEY (`content_type_id`) REFERENCES `django_content_type` (`id`),
+ADD CONSTRAINT `django_admin_log_user_id_52fdd58701c5f563_fk_auth_user_id` FOREIGN KEY (`user_id`) REFERENCES `auth_user` (`id`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
