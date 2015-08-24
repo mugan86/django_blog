@@ -10,50 +10,112 @@
         <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
         <link rel="stylesheet" href="{% static "css/blog.css" %}">
         <link href="http://fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+        <!-- Bootstrap Core CSS -->
+        <link rel="stylesheet" href="{% static "css/bootstrap.min.css"  %}">
+
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="{% static "css/clean-blog.min.css"  %}">
+
+        <!-- Custom Fonts -->
+        <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+        <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
     </head>
     <body>
-           <!-- Fixed navbar -->
-        <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-          <div class="container">
-            <div class="navbar-header">
-              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-              </button>
-              <div class="small-logo-container">
-                <a class="small-logo" href="/">Django Blog Example</a>
+      <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+          <div class="container-fluid">
+              <!-- Brand and toggle get grouped for better mobile display -->
+              <div class="navbar-header page-scroll">
+                  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                      <span class="sr-only">Toggle navigation</span>
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                  </button>
+                  <a class="navbar-brand" href="/">Start Bootstrap</a>
               </div>
-            </div>
-            <div class="navbar-collapse collapse">
 
+              <!-- Collect the nav links, forms, and other content for toggling -->
+              <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                  <ul class="nav navbar-nav navbar-right">
+                      <li>
+                          <a href="/">Home</a>
+                      </li>
+                      <li>
+                          <a href="about.html">About</a>
+                      </li>
+                      <li>
+                          <a href="post.html">Sample Post</a>
+                      </li>
+                      <li>
+                          <a href="contact.html">Contact</a>
+                      </li>
+                  </ul>
+              </div>
+              <!-- /.navbar-collapse -->
+          </div>
+          <!-- /.container -->
+      </nav>
+     <!-- Page Header -->
+      <!-- Set your background image for this header on the line below. -->
+      <header class="intro-header" style="background-image: url('{% static "img/home-bg.jpg"  %}')">
+          <div class="container">
+              <div class="row">
+                  <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                      <div class="site-heading">
+                          <h1>Servirace</h1>
+                          <hr class="small">
+                          <span class="subheading">Blog of content about Servirace App</span>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </header>
+
+      <div class="container">
+        <!--<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+          <div class="navbar-header">
+            <div class="small-logo-container">
+              <a class="small-logo" href="/">Django Blog Example</a>
+            </div>
+
+            <div class="navbar-collapse collapse">
               <ul class="nav navbar-nav navbar-right">
                 <li><a href="/">Home</a></li>
                 <li><a href="{% url "blog.views.post_new" %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span> New Post</a></li>
               </ul>
-            </div><!--/.nav-collapse -->
+            </div><
+
           </div>
+
         </div>
+      </div>-->
 
-        <br/><br/><br/>
+        <div class="row">
+          <div class="col-lg-5 col-md-6 col-sm-8">
+           <div class="content container">
+                  <div class="row">
+                      <div class="col-md-8">
+                          {% block content %}
+                          {% endblock %}
+                      </div>
+                  </div>
+              </div>
+          </div><!--/.col-xs-12 -->
+        </div><!--/.row -->
+      </div><!--/.container -->
 
-        <div class="container">
-          <div class="row">
-            <div class="col-lg-5 col-md-6 col-sm-8">
-             <div class="content container">
-                    <div class="row">
-                        <div class="col-md-8">
-                            {% block content %}
-                            {% endblock %}
-                        </div>
-                    </div>
-                </div>
-            </div><!--/.col-xs-12 -->
-          </div><!--/.row -->
-        </div><!--/.container -->
+      <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+      <script src='http://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js'></script>
+       <!-- jQuery -->
+      <script src="{% static "js/jquery.js" %}"></script>
 
-        <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
-        <script src='http://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js'></script>
+      <!-- Bootstrap Core JavaScript -->
+      <script src="{% static "js/bootstrap.min.js" %}"></script>
+
+      <!-- Custom Theme JavaScript -->
+      <script src="{% static "js/clean-blog.min.js" %}"></script>
     </body>
 </html>
