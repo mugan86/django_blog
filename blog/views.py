@@ -4,7 +4,8 @@ from .models import Post
 from .forms import PostForm
 
 def post_list(request):
-    posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
+    # Add "-" inside 'order by' element to change publish order
+    posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('-published_date')
     # import pdb
     # pdb.set_trace()
     return render(request, 'blog/post_list.html', {'posts': posts})
@@ -38,5 +39,8 @@ def post_edit(request, pk):
             form = PostForm(instance=post)
         return render(request, 'blog/post_edit.html', {'form': form})
 
+def about(request):
+    return render(request, 'blog/about.html')
+
 def contact(request):
-        return render(request, 'blog/about.html')
+    return render(request, 'blog/contact.html')
