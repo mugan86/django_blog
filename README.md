@@ -38,7 +38,7 @@ Disactive:
 Install/Create Connection MySQL in Python:
 
 ```sh
-(python2.7) $ sudo brew install mysql    # add with libmysqlclient-dev
+(python2.7) $ brew install mysql    # add with libmysqlclient-dev
 (python2.7) $ sudo pip install mysql-python
 ```
 
