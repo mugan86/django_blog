@@ -7,7 +7,7 @@ class PostForm(forms.ModelForm):
     class Meta:
         model = Post
         # Fields to show in form
-        fields = ('title', 'description', 'text')
+        fields = ('title', 'description', 'text', 'category', 'source', 'source_title')
 
 class ContactForm(forms.ModelForm):
 
