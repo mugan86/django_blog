@@ -17,5 +17,8 @@
             {{ post.description}}
         </h3>
         <p>{{ post.text | linebreaks }}</p>
+        {% if post.source != '' %}
+        <p> M&aacute;s informaci&oacute;n: <a href = "{{post.source}}">{{post.source_title}}</a></p>
+        {% endif %}
     </div>
 {% endblock %}
