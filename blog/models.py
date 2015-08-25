@@ -10,6 +10,8 @@ class Post(models.Model):
     description = models.CharField(max_length=200)
     text = models.TextField()
     source = models.CharField(max_length=250)
+    source_title = models.CharField(max_length=200)
+    category = models.ForeignKey('Category')
     created_date = models.DateTimeField(
                 default=timezone.now)
     published_date = models.DateTimeField(
@@ -24,10 +26,9 @@ class Post(models.Model):
 
 class Category(models.Model):
     """
-    Post propert
+    Category propert
     """
-    author = models.ForeignKey('auth.User')
-    title = models.CharField(max_length=200)
+    title = models.CharField(max_length=200, primary_key=True)
     description = models.TextField()
     created_date = models.DateTimeField(
                 default=timezone.now)
