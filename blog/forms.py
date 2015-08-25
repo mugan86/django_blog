@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from django import forms
 from .models import Post
 from .models import Contact
@@ -8,6 +9,28 @@ class PostForm(forms.ModelForm):
         model = Post
         # Fields to show in form
         fields = ('title', 'description', 'text', 'category', 'source', 'source_title')
+
+    #Validate post title length minimum 5 characters
+    def clean_title(self):
+      diccionario_limpio = self.cleaned_data
+
+      title = diccionario_limpio.get('title')
+
+      if len(title) < 5:
+         raise forms.ValidationError("El título debe contener más de cinco carácteres")
+
+      return title
+
+    #Validate post title length minimum 5 characters
+    def clean_description(self):
+      diccionario_limpio = self.cleaned_data
+
+      description = diccionario_limpio.get('description')
+
+      if len(description) < 10:
+         raise forms.ValidationError("La descripción debe contener más de 10 carácteres")
+
+      return title
 
 class ContactForm(forms.ModelForm):
 
