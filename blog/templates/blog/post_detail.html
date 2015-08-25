@@ -1,4 +1,10 @@
 {% extends "blog/base.html" %}
+{% load staticfiles %}
+{% block header-img %}
+
+    style="background-image: url('{% static "img/nature.jpg"  %}')"
+
+{% endblock %}
 
 {% block content %}
     <div class="post">
