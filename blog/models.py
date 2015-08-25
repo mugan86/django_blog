@@ -11,7 +11,8 @@ class Post(models.Model):
     text = models.TextField()
     source = models.CharField(max_length=250)
     source_title = models.CharField(max_length=200)
-    category = models.ForeignKey('Category')
+    category1 = models.ForeignKey('Category', related_name='category1')
+    category2 = models.ForeignKey('Category', related_name='category2')
     created_date = models.DateTimeField(
                 default=timezone.now)
     published_date = models.DateTimeField(
