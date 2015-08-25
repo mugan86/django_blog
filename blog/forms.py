@@ -8,7 +8,7 @@ class PostForm(forms.ModelForm):
     class Meta:
         model = Post
         # Fields to show in form
-        fields = ('title', 'description', 'text', 'category1', 'source', 'source_title')
+        fields = ('title', 'description', 'text', 'category1', 'category2','source', 'source_title')
 
     #Validate post title length minimum 5 characters
     def clean_title(self):
