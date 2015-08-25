@@ -45,7 +45,7 @@ def post_edit(request, pk):
 
 def contact_new(request):
 
-    title = "Add new post"
+    title = "Contact Form"
     if request.method == "POST":
         form = ContactForm(request.POST)
         if form.is_valid():
