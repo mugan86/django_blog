@@ -90,6 +90,12 @@ Input 127.0.0.1:8000 in web browser
 Template download from http://startbootstrap.com/template-overviews/clean-blog/
 ```
 
+###Problems
+
+Define two foreign keys to the same model (For example: Category)
+
+http://stackoverflow.com/questions/543377/how-can-i-have-two-foreign-keys-to-the-same-model-in-django
+
 
 
 
