@@ -39,3 +39,21 @@ class Category(models.Model):
 
     def __str__(self):
         return self.title
+
+class Contact(models.Model):
+    """
+    Contact propert
+    """
+    id = models.AutoField(primary_key=True)
+    name = models.CharField(max_length=100)
+    email = models.CharField(max_length=100)
+    message = models.TextField()
+    received_date = models.DateTimeField(
+                default=timezone.now)
+
+    def publish(self):
+        self.received_date = timezone.now()
+        self.save()
+
+    def __str__(self):
+        return self.name
