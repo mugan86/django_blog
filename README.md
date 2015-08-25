@@ -3,6 +3,8 @@ Django Example with my first Django Project :)
 
 This repository stores my first Django project using the manual " Django Girls".
 
+The project can be seen at http://amugika.pythonanywhere.com
+
 In this moment configure to use with SQLite DB.
 
 To use MySQL Database change 'settings.py' inside 'youtube_api' directory.
