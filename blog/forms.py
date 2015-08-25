@@ -14,4 +14,4 @@ class ContactForm(forms.ModelForm):
     class Meta:
         model = Contact
         # Fields to show in form
-        fields = ('name', 'email', 'message', 'received_date')
+        fields = ('name', 'email', 'message', )
