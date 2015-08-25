@@ -11,6 +11,7 @@ class ContactAdmin(admin.ModelAdmin):
     list_display = ('name', 'email','received_date', )
 
 admin.site.register(Post, PostAdmin)
+
 #Add create model in admin site to show
 admin.site.register(Category)
 admin.site.register(Contact, ContactAdmin)
