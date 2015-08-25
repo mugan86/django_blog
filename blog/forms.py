@@ -30,7 +30,7 @@ class PostForm(forms.ModelForm):
       if len(description) < 10:
          raise forms.ValidationError("La descripción debe contener más de 10 carácteres")
 
-      return title
+      return description
 
 class ContactForm(forms.ModelForm):
 
