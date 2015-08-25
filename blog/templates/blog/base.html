@@ -45,9 +45,6 @@
                       <li>
                           <a href="/about">About</a>
                       </li>
-                      <!--<li>
-                          <a href="">Test</a>
-                      </li>-->
                       <li>
                         <a a href="/contact">Contact</a>
                       </li>
@@ -142,6 +139,9 @@
                         </li>
                     </ul>
                     <p class="copyright text-muted">Copyright &copy; Django Blog Example <script> document.write(new Date().getFullYear())</script></p>
+                    {% if user.is_authenticated %}
+                    <p class="copyright text-muted"><a a href="/admin">Administration</a></p>
+                    {% endif %}
                 </div>
             </div>
         </div>
