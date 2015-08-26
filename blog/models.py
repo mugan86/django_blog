@@ -1,3 +1,4 @@
+# -*- encoding: utf-8 -*-
 from django.db import models
 from django.utils import timezone
 
@@ -40,8 +41,8 @@ class Category(models.Model):
         self.published_date = timezone.now()
         self.save()
 
-    def __str__(self):
-        return self.title
+    def __unicode__(self):
+        return u'%s' % self.title
 
 class Contact(models.Model):
     """
@@ -58,8 +59,8 @@ class Contact(models.Model):
         self.received_date = timezone.now()
         self.save()
 
-    def __str__(self):
-        return self.name
+    def __unicode__(self):
+        return u'%s' % self.name
 
 class Project(models.Model):
     """
@@ -73,6 +74,7 @@ class Project(models.Model):
     source_title = models.CharField(max_length=200)
     photo_url = models.CharField(max_length=255)
     finish = models.BooleanField(default=False)
+    active = models.BooleanField(default=True)
     start_project_date = models.DateTimeField(
                 default=timezone.now)
     published_date = models.DateTimeField(
@@ -82,5 +84,5 @@ class Project(models.Model):
         self.published_date = timezone.now()
         self.save()
 
-    def __str__(self):
-        return self.name
+    def __unicode__(self):
+        return u'%s' % self.name
