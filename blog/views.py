@@ -1,6 +1,7 @@
 # -*- encoding: utf-8 -*-
 from django.shortcuts import render, get_object_or_404, redirect
 from django.utils import timezone
+from django.db.models import Count
 from .models import Post
 from .forms import PostForm
 from .forms import ContactForm
@@ -8,6 +9,17 @@ from .forms import ContactForm
 def post_list(request):
     # Add "-" inside 'order by' element to change publish order
     posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('-published_date')
+
+    p = Post.objects.all().annotate(Count('title',
+                                         distinct=True))
+
+    print p.count()
+
+    ##Get Post category appears count to show in right column space
+
+    for p in Post.objects.raw('SELECT id, category1_id , COUNT(*) as co FROM blog_post GROUP BY category1_id'):
+        print "%s: %s" % (p.category1_id, p.co)
+
     # import pdb
     # pdb.set_trace()
     return render(request, 'blog/post_list.html', {'posts': posts})
