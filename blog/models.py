@@ -60,3 +60,27 @@ class Contact(models.Model):
 
     def __str__(self):
         return self.name
+
+class Project(models.Model):
+    """
+    Project propert
+    """
+    id = models.AutoField(primary_key=True)
+    name = models.CharField(max_length=150)
+    description = models.TextField()
+    category = models.ForeignKey('Category')
+    source = models.CharField(max_length=250)
+    source_title = models.CharField(max_length=200)
+    photo_url = models.CharField(max_length=255)
+    finish = models.BooleanField(default=False)
+    start_project_date = models.DateTimeField(
+                default=timezone.now)
+    published_date = models.DateTimeField(
+                default=timezone.now)
+
+    def publish(self):
+        self.published_date = timezone.now()
+        self.save()
+
+    def __str__(self):
+        return self.name
