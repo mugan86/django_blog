@@ -110,5 +110,11 @@ Encoding error (Add UTF-8 coding in py file)
 http://django.es/blog/anadir-encoding-utf-8-nuestros-archivos-py/
 ```
 
+Encoding error inside Admin Page:
+
+```sh
+http://stackoverflow.com/questions/6560226/django-unicode-error-on-admin-page
+```
+
 
 
