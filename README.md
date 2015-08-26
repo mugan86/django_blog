@@ -90,7 +90,7 @@ Input 127.0.0.1:8000 in web browser
 Template download from http://startbootstrap.com/template-overviews/clean-blog/
 ```
 
-###Problems
+###Problems & Solutions
 
 Define two foreign keys to the same model (For example: Category)
 
@@ -114,6 +114,23 @@ Encoding error inside Admin Page:
 
 ```sh
 http://stackoverflow.com/questions/6560226/django-unicode-error-on-admin-page
+```
+
+Count element frecuency inside list
+
+http://stackoverflow.com/questions/2161752/how-to-count-the-frequency-of-the-elements-in-a-list
+
+```sh
+>>> a = [1,1,1,1,2,2,2,2,3,3,4,5,5]
+>>>
+>>> from collections import Counter
+>>> c=Counter(a)
+>>>
+>>> c.values()
+[4, 4, 2, 1, 2]
+>>>
+>>> c.keys()
+[1, 2, 3, 4, 5]
 ```
 
 
