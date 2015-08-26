@@ -104,6 +104,11 @@ Autoescape HTML code:
 {% autoescape off %}{{ variable }}{% endautoescape %} 
 ```
 
+Encoding error (Add UTF-8 coding in py file)
+
+```sh
+http://django.es/blog/anadir-encoding-utf-8-nuestros-archivos-py/
+```
 
 
 
