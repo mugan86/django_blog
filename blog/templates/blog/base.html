@@ -50,8 +50,11 @@
                       </li>
                       {% if user.is_authenticated %}
                       <li>
-                          <a a href="{% url "blog.views.post_new" %}">New Post</a>
+                          <a href="{% url "blog.views.post_new" %}">New Post</a>
                       </li>
+                      <li>
+                        <a href="/admin">Administration</a>
+                    </li>
                       {% endif %}
                   </ul>
               </div>
@@ -159,7 +162,7 @@
                     </ul>
                     <p class="copyright text-muted">Copyright &copy; Anartz Mugika <script> document.write(new Date().getFullYear())</script></p>
                     {% if user.is_authenticated %}
-                      <p class="copyright text-muted"><a a href="/admin">Administration</a></p>
+                      <p class="copyright text-muted"><a href="/admin">Administration</a></p>
                     {% endif %}
                 </div>
             </div>
