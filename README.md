@@ -94,7 +94,15 @@ Template download from http://startbootstrap.com/template-overviews/clean-blog/
 
 Define two foreign keys to the same model (For example: Category)
 
+```sh
 http://stackoverflow.com/questions/543377/how-can-i-have-two-foreign-keys-to-the-same-model-in-django
+```
+
+Autoescape HTML code:
+
+```sh
+{% autoescape off %}{{ variable }}{% endautoescape %} 
+```
 
 
 
