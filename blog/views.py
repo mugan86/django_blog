@@ -10,10 +10,16 @@ def post_list(request):
     # Add "-" inside 'order by' element to change publish order
     posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('-published_date')
 
-    p = Post.objects.all().annotate(Count('title',
-                                         distinct=True))
+    p_count = Post.objects.all().count()
 
-    print p.count()
+    post_per_page = 2
+
+    pages = p_count / 2
+
+    """p = Post.objects.all().annotate(Count('title',
+                                         distinct=True))"""
+
+    ###print p.count()
 
     ##Get Post category appears count to show in right column space
 
@@ -22,7 +28,7 @@ def post_list(request):
 
     # import pdb
     # pdb.set_trace()
-    return render(request, 'blog/post_list.html', {'posts': posts})
+    return render(request, 'blog/post_list.html', {'posts': posts, })
 
 def post_detail(request, pk):
     post = get_object_or_404(Post, pk=pk)
