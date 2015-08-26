@@ -5,6 +5,7 @@ from django.db.models import Count
 from .models import Post
 from .forms import PostForm
 from .forms import ContactForm
+from collections import Counter
 
 def post_list(request):
     # Add "-" inside 'order by' element to change publish order
@@ -12,9 +13,15 @@ def post_list(request):
 
     p_count = Post.objects.all().count()
 
-    post_per_page = 2
+    post_per_page = 10
 
-    pages = p_count / 2
+    pages = round(p_count / post_per_page, 0)
+
+    if (p_count % post_per_page > 0):
+        pages = pages + 1
+
+    #print "Post total: %s" % (p_count)
+    #print "Pages total: %s" % (pages)
 
     """p = Post.objects.all().annotate(Count('title',
                                          distinct=True))"""
@@ -22,13 +29,34 @@ def post_list(request):
     ###print p.count()
 
     ##Get Post category appears count to show in right column space
+    post_categorys = []
 
-    """for p in Post.objects.raw('SELECT id, category1_id , COUNT(*) as co FROM blog_post GROUP BY category1_id'):
-        print "%s: %s" % (p.category1_id, p.co)"""
+    #create method to short code...
 
+    category_1 = Post.objects.raw('SELECT id, category1_id FROM blog_post')
+    category_2 = Post.objects.raw('SELECT id, category2_id FROM blog_post')
+
+    for p in category_1:
+        post_categorys.append("%s" % (p.category1_id))
+
+    for p in category_2:
+        post_categorys.append("%s" % (p.category2_id))
+
+    #Extract list values and appears count
+    c=Counter(post_categorys)
+
+    appears = c.values();
+    values = c.keys();
+    
+    post_categorys = []
+
+    for i in range(len(appears)):
+        print i, appears[i]
+        post_categorys.append("%s (%s)" % (values[i] , appears[i]))
+    
     # import pdb
     # pdb.set_trace()
-    return render(request, 'blog/post_list.html', {'posts': posts, })
+    return render(request, 'blog/post_list.html', {'posts': posts, 'post_categorys': post_categorys})
 
 def post_detail(request, pk):
     post = get_object_or_404(Post, pk=pk)
