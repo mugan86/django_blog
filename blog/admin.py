@@ -13,7 +13,7 @@ class ContactAdmin(admin.ModelAdmin):
     list_display = ('name', 'email','received_date', )
 
 class ProjectAdmin(admin.ModelAdmin):
-    list_display = ('id', 'name', 'description', 'category', 'published_date')
+    list_display = ('name', 'description', 'category', 'published_date')
 
 admin.site.register(Post, PostAdmin)
 
