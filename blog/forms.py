@@ -12,25 +12,26 @@ class PostForm(forms.ModelForm):
 
     #Validate post title length minimum 5 characters
     def clean_title(self):
-      diccionario_limpio = self.cleaned_data
+        diccionario_limpio = self.cleaned_data
 
-      title = diccionario_limpio.get('title')
+        title = diccionario_limpio.get('title')
 
-      if len(title) < 5:
-         raise forms.ValidationError("El título debe contener más de cinco carácteres")
+        if len(title) < 5:
+            raise forms.ValidationError("El título debe contener más de cinco carácteres")
 
-      return title
+
+        return title
 
     #Validate post title length minimum 5 characters
     def clean_description(self):
-      diccionario_limpio = self.cleaned_data
+        diccionario_limpio = self.cleaned_data
 
-      description = diccionario_limpio.get('description')
+        description = diccionario_limpio.get('description')
 
-      if len(description) < 10:
-         raise forms.ValidationError("La descripción debe contener más de 10 carácteres")
+        if len(description) < 10:
+            raise forms.ValidationError("La descripción debe contener más de 10 carácteres")
 
-      return description
+        return description
 
 class ContactForm(forms.ModelForm):
 
