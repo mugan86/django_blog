@@ -23,8 +23,8 @@ def post_list(request):
 
     ##Get Post category appears count to show in right column space
 
-    for p in Post.objects.raw('SELECT id, category1_id , COUNT(*) as co FROM blog_post GROUP BY category1_id'):
-        print "%s: %s" % (p.category1_id, p.co)
+    """for p in Post.objects.raw('SELECT id, category1_id , COUNT(*) as co FROM blog_post GROUP BY category1_id'):
+        print "%s: %s" % (p.category1_id, p.co)"""
 
     # import pdb
     # pdb.set_trace()
