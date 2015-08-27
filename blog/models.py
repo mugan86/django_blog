@@ -3,6 +3,10 @@ from django.db import models
 from django.utils import timezone
 from ckeditor.fields import RichTextField
 
+"""
+def __str__(self) instead of def __unicode__(self) in python3. Set Unicode and no error (in python2 must be __unicode__)
+"""
+
 class Post(models.Model):
     """
     Post propert
@@ -24,7 +28,7 @@ class Post(models.Model):
         self.published_date = timezone.now()
         self.save()
 
-    def __unicode__(self):
+    def __str__(self):
         return u'%s' % self.title
 
 class Category(models.Model):
@@ -42,7 +46,7 @@ class Category(models.Model):
         self.published_date = timezone.now()
         self.save()
 
-    def __unicode__(self):
+    def __str__(self):
         return u'%s' % self.title
 
 class Contact(models.Model):
@@ -60,7 +64,7 @@ class Contact(models.Model):
         self.received_date = timezone.now()
         self.save()
 
-    def __unicode__(self):
+    def __str__(self):
         return u'%s' % self.name
 
 class Project(models.Model):
@@ -85,5 +89,5 @@ class Project(models.Model):
         self.published_date = timezone.now()
         self.save()
 
-    def __unicode__(self):
+    def __str__(self):
         return u'%s' % self.name
