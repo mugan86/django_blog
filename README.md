@@ -5,6 +5,20 @@ This repository stores my first Django project using the manual " Django Girls".
 
 The project can be seen at http://amugika.pythonanywhere.com
 
+Start basic steps:
+
+Clone repository.
+
+Install Django last version
+
+```sh
+pip install django==1.8
+```
+
+# CKEditor Installation Guide & more info
+
+https://github.com/django-ckeditor/django-ckeditor
+
 In this moment configure to use with SQLite DB.
 
 To use MySQL Database change 'settings.py' inside 'youtube_api' directory.
