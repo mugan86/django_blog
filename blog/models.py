@@ -1,6 +1,7 @@
 # -*- encoding: utf-8 -*-
 from django.db import models
 from django.utils import timezone
+from ckeditor.fields import RichTextField
 
 class Post(models.Model):
     """
@@ -9,7 +10,7 @@ class Post(models.Model):
     author = models.ForeignKey('auth.User')
     title = models.CharField(max_length=200)
     description = models.CharField(max_length=200)
-    text = models.TextField()
+    text = RichTextField()
     source = models.CharField(max_length=250)
     source_title = models.CharField(max_length=200)
     category1 = models.ForeignKey('Category', related_name='category1')
