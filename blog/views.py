@@ -28,16 +28,13 @@ def post_list(request):
 
     ###print p.count()
 
-    ##Get Post category appears count to show in right column space
-    post_categorys = get_post_categories()
-
     # import pdb
     # pdb.set_trace()
-    return render(request, 'blog/post_list.html', {'posts': posts, 'post_categorys': post_categorys})
+    return render(request, 'blog/post_list.html', {'posts': posts, 'post_categorys': get_post_categories()})
 
 def post_detail(request, pk):
     post = get_object_or_404(Post, pk=pk)
-    return render(request, 'blog/post_detail.html', {'post': post})
+    return render(request, 'blog/post_detail.html', {'post': post, 'post_categorys': get_post_categories()})
 
 def post_new(request):
 
@@ -51,7 +48,7 @@ def post_new(request):
             return redirect('blog.views.post_detail', pk=post.pk)
     else:
         form = PostForm()
-    return render(request, 'blog/post_edit.html', {'form': form, 'title': title})
+    return render(request, 'blog/post_edit.html', {'form': form, 'title': title, 'post_categorys': get_post_categories()})
 
 def post_edit(request, pk):
         title = "Edit select post"
@@ -65,7 +62,7 @@ def post_edit(request, pk):
                 return redirect('blog.views.post_detail', pk=post.pk)
         else:
             form = PostForm(instance=post)
-        return render(request, 'blog/post_edit.html', {'form': form, 'title': title})
+        return render(request, 'blog/post_edit.html', {'form': form, 'title': title, 'post_categorys': get_post_categories()})
 
 def contact_new(request):
 
@@ -82,14 +79,15 @@ def contact_new(request):
     else:
         form = ContactForm()
 
-    return render(request, 'blog/post_edit.html', {'form': form, 'title': title})
+    return render(request, 'blog/post_edit.html', {'form': form, 'title': title, 'post_categorys': get_post_categories()})
 
 def about(request):
-    return render(request, 'blog/about.html')
+
+    return render(request, 'blog/about.html', {'post_categorys': get_post_categories()})
 
 """def contact(request):
     return render(request, 'blog/contact.html')"""
-
+##Get Post category appears count to show in right column space
 def get_post_categories():
     post_categorys = []
 
