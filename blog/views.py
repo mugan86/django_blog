@@ -110,9 +110,10 @@ def get_post_categories():
 
     post_categorys = []
 
-    for i in range(len(appears)):
-        #print i, appears[i]
-        post_categorys.append("%s (%s)" % (values[i] , appears[i]))
+
+    for x in c.keys():
+        print ("%s (%s)" % (x, c[x]))
+        post_categorys.append("%s (%s)" % (x, c[x]))
 
     return post_categorys
 
