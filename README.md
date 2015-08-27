@@ -151,7 +151,7 @@ http://stackoverflow.com/questions/2161752/how-to-count-the-frequency-of-the-ele
 
 ```sh
 If you are on Python 3, you can skip this section because you’ll always create __str__() rather than __unicode__(). If you’d like compatibility with Python 2, you can decorate your model class with python_2_unicode_compatible(). In python 2 create with __unicode__()
-``
+```
 
 https://docs.djangoproject.com/en/1.8/ref/unicode/
 
