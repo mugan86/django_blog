@@ -29,31 +29,8 @@ def post_list(request):
     ###print p.count()
 
     ##Get Post category appears count to show in right column space
-    post_categorys = []
+    post_categorys = get_post_categories()
 
-    #create method to short code...
-
-    category_1 = Post.objects.raw('SELECT id, category1_id FROM blog_post')
-    category_2 = Post.objects.raw('SELECT id, category2_id FROM blog_post')
-
-    for p in category_1:
-        post_categorys.append("%s" % (p.category1_id))
-
-    for p in category_2:
-        post_categorys.append("%s" % (p.category2_id))
-
-    #Extract list values and appears count
-    c=Counter(post_categorys)
-
-    appears = c.values();
-    values = c.keys();
-    
-    post_categorys = []
-
-    for i in range(len(appears)):
-        print i, appears[i]
-        post_categorys.append("%s (%s)" % (values[i] , appears[i]))
-    
     # import pdb
     # pdb.set_trace()
     return render(request, 'blog/post_list.html', {'posts': posts, 'post_categorys': post_categorys})
@@ -112,3 +89,32 @@ def about(request):
 
 """def contact(request):
     return render(request, 'blog/contact.html')"""
+
+def get_post_categories():
+    post_categorys = []
+
+    #create method to short code...
+
+    category_1 = Post.objects.raw('SELECT id, category1_id FROM blog_post')
+    category_2 = Post.objects.raw('SELECT id, category2_id FROM blog_post')
+
+    for p in category_1:
+        post_categorys.append("%s" % (p.category1_id))
+
+    for p in category_2:
+        post_categorys.append("%s" % (p.category2_id))
+
+    #Extract list values and appears count
+    c=Counter(post_categorys)
+
+    appears = c.values();
+    values = c.keys();
+
+    post_categorys = []
+
+    for i in range(len(appears)):
+        #print i, appears[i]
+        post_categorys.append("%s (%s)" % (values[i] , appears[i]))
+
+    return post_categorys
+
