@@ -1,5 +1,7 @@
 {% extends "blog/base.html" %}
 {% load staticfiles %}
+<script type="text/javascript" src="{% static "ckeditor/ckeditor/ckeditor.js" %}"></script>
+<script type="text/javascript" src="{% static "ckeditor/ckeditor-init.js" %}"></script>
 {% block header-img %}
 
     style="background-image: url('{% static "img/catarata.jpg"  %}')"
@@ -9,6 +11,7 @@
 {% block content %}
     <h1>{{title}}</h1>
     <form method="POST" class="post-form">{% csrf_token %}
+        {{ form.media }}
         {{ form.as_p }}
         <button type="submit" class="save btn btn-default">Save</button>
     </form>
