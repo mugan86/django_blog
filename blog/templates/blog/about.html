@@ -15,3 +15,14 @@
     </div>
 {% endblock %}
 
+{% block categories %}
+    <div class="well">
+        <h4> Categories</h4>
+        <ul>
+            {% for cat in post_categorys %}
+                <li>{{ cat }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endblock %}
+
