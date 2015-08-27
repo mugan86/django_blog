@@ -110,7 +110,7 @@ def get_post_categories():
 
     post_categorys = []
 
-
+    #Store data string in post_categorys[] list
     for x in c.keys():
         print ("%s (%s)" % (x, c[x]))
         post_categorys.append("%s (%s)" % (x, c[x]))
