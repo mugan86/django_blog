@@ -7,7 +7,7 @@ from .models import Project
 
 
 class PostAdmin(admin.ModelAdmin):
-    list_display = ('author', 'title', 'description', 'created_date','published_date', )
+    list_display = ('author', 'title', 'description', 'text', 'created_date','published_date', )
 
 class CategoryAdmin(admin.ModelAdmin):
     list_display = ('title', 'description', 'created_date','published_date',)
