@@ -20,6 +20,8 @@ class Post(models.Model):
     category1 = models.ForeignKey('Category', related_name='category1')
     category2 = models.ForeignKey('Category', related_name='category2')
     post_type = models.ForeignKey('PostType');
+    the_most_important = models.BooleanField(default=False)
+    active = models.BooleanField(default=True)
     created_date = models.DateTimeField(
                 default=timezone.now)
     published_date = models.DateTimeField(
