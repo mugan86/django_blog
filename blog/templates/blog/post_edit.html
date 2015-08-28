@@ -10,11 +10,14 @@
 
 {% block content %}
     <h1>{{title}}</h1>
-    <form method="POST" class="post-form">{% csrf_token %}
-        {{ form.media }}
-        {{ form.as_p }}
-        <button type="submit" class="save btn btn-default">Save</button>
+    <div id="edit-form">
+        <form method="POST" class="post-form">{% csrf_token %}
+            {{ form.media }}
+            {{ form.as_p }}
+        <button type="submit" class="save btn btn-default">Guardar Cambios</button>
     </form>
+    </div>
+    
 {% endblock %}
 {% block categories %}
     <div class="well">
