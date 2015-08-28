@@ -19,6 +19,7 @@ class Post(models.Model):
     source_title = models.CharField(max_length=200)
     category1 = models.ForeignKey('Category', related_name='category1')
     category2 = models.ForeignKey('Category', related_name='category2')
+    post_type = models.ForeignKey('PostType');
     created_date = models.DateTimeField(
                 default=timezone.now)
     published_date = models.DateTimeField(
@@ -30,6 +31,24 @@ class Post(models.Model):
 
     def __str__(self):
         return u'%s' % self.title
+
+class PostType(models.Model):
+    """Manage post type data to classified in different types (blog, videos, articles,...)"""
+
+    name = models.CharField(max_length=100, primary_key=True)
+    description = RichTextField()
+    active = models.BooleanField(default=False)
+    created_date = models.DateTimeField(
+                default=timezone.now)
+    published_date = models.DateTimeField(
+                default=timezone.now)
+
+    def publish(self):
+        self.published_date = timezone.now()
+        self.save()
+
+    def __str__(self):
+        return u'%s' % self.name
 
 class Category(models.Model):
     """
