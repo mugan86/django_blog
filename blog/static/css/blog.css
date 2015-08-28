@@ -14,6 +14,11 @@
     margin-left: 40px;
 }
 
+#edit-form
+{
+    margin-bottom: 100px !important;
+}
+
 h1, h2, h3, h4 {
     font-family: 'Lobster', cursive;
 }
