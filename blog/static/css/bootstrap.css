@@ -6413,6 +6413,10 @@ button.close {
   .visible-xs-block {
     display: block !important;
   }
+  #edit-form
+  {
+    margin-bottom: 100px !important;
+  }
 }
 @media (max-width: 767px) {
   .visible-xs-inline {
