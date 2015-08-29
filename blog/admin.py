@@ -5,6 +5,8 @@ from .models import PostType
 from .models import Category
 from .models import Contact
 from .models import Project
+from .models import Friend
+from .models import FriendType
 
 
 class PostAdmin(admin.ModelAdmin):
@@ -28,8 +30,19 @@ class ContactAdmin(admin.ModelAdmin):
 class ProjectAdmin(admin.ModelAdmin):
     list_display = ('name', 'description', 'category', 'published_date')
 
+class FriendAdmin(admin.ModelAdmin):
+    list_display = ('name', 'description', 'category', 'img', 'url', 'active', 'type')
+    list_filter = ('name', 'add_data', 'active')
+    ordering = ('-id',)
+    search_fields = ('name',)
+
+class FriendTypeAdmin(admin.ModelAdmin):
+    list_display = ('name', 'description', 'active', 'add_data')
+
 admin.site.register(Post, PostAdmin)
 admin.site.register(PostType, PostTypeAdmin)
 admin.site.register(Category, CategoryAdmin)
 admin.site.register(Contact, ContactAdmin)
 admin.site.register(Project, ProjectAdmin)
+admin.site.register(Friend, FriendAdmin)
+admin.site.register(FriendType, FriendTypeAdmin)
