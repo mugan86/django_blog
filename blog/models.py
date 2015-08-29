@@ -113,13 +113,27 @@ class Project(models.Model):
     def __str__(self):
         return u'%s' % self.name
 
-class Collaboration(models.Model):
+class Friend(models.Model):
     id= models.AutoField(primary_key=True)
     name = models.CharField(max_length=150)
     description = models.CharField(max_length=200, default="")
     category = models.ForeignKey('Category')
     img = models.CharField(max_length=200)
     url = models.CharField(max_length=200)
+    active = models.BooleanField(default=True)
+    type = models.ForeignKey('FriendType')
+    add_data = models.DateTimeField(default=timezone.now)
+
+    def publish(self):
+        self.add_data = timezone.now()
+        self.save()
+
+    def __str__(self):
+        return u'%s' % self.name
+
+class FriendType(models.Model):
+    name = models.CharField(max_length=100, primary_key=True)
+    description = models.CharField(max_length=200)
     active = models.BooleanField(default=True)
     add_data = models.DateTimeField(default=timezone.now)
 
