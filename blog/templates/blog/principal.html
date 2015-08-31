@@ -2,7 +2,7 @@
 
 {% block content %}
     <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-        <p>{{ main_post.title}}</p>
+        <h1>{{ main_post.title}}</h1>
         <p>{{ main_post.text}}</p>
         <pre>&lt;p&gt;Sample text here...&lt;/p&gt;</pre>
     </div>
@@ -13,8 +13,10 @@
         <h4> Categories</h4>
         <ul>
             {% for cat in post_categorys %}
-                <li>{{ cat }}</li>
+                <li><a href="/post/category/Web">{{ cat }}</li>
             {% endfor %}
         </ul>
     </div>
 {% endblock %}
+
+<!--{% url "blog.views.post_list_by_category" category=cat %}
