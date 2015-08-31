@@ -8,7 +8,19 @@ from .forms import ContactForm
 from collections import Counter
 
 def principal(request):
-    return render(request, 'blog/principal.html', {'post_categorys': get_post_categories()})
+
+    main_object = [];
+    main = Post.objects.raw('SELECT * FROM blog_post WHERE post_type_id="Inicio" AND active = 1 ORDER BY published_date DESC')
+    for p in main:
+        main_object.append(p)
+
+    c=Counter(main_object)
+    print (len(main_object))
+    print (main_object[0])
+    print (main_object[0].title)
+    print (main_object[0].description)
+
+    return render(request, 'blog/principal.html', {'post_categorys': get_post_categories(), 'main_post': main_object[0]})
 
 def post_list(request):
     # Add "-" inside 'order by' element to change publish order
