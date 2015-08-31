@@ -7,6 +7,9 @@ from .forms import PostForm
 from .forms import ContactForm
 from collections import Counter
 
+def principal(request):
+    return render(request, 'blog/principal.html', {'post_categorys': get_post_categories()})
+
 def post_list(request):
     # Add "-" inside 'order by' element to change publish order
     posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('-published_date')
