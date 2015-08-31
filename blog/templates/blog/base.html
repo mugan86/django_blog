@@ -40,23 +40,26 @@
               <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                   <ul class="nav navbar-nav navbar-right sidebar-nav">
                       <li>
-                          <a href="/">Home</a>
+                          <a href="/">Inicio</a>
                       </li>
                       <li>
-                          <a href="/about">About</a>
+                          <a href="/blog">Blog</a>
+                      </li>
+                      <li>
+                          <a href="/about">Sobre mi</a>
                       </li>
                       <li>
                         <a a href="/contact">Proyectos</a>
                       </li>
                       <li>
-                        <a a href="/contact">Contact</a>
+                        <a a href="/contact">Contacto</a>
                       </li>
                       {% if user.is_authenticated %}
                       <li>
-                          <a href="{% url "blog.views.post_new" %}">New Post</a>
+                          <a href="{% url "blog.views.post_new" %}">Nueva entrada</a>
                       </li>
                       <li>
-                        <a href="/admin">Administration</a>
+                        <a href="/admin">Admin</a>
                     </li>
                       {% endif %}
                   </ul>
