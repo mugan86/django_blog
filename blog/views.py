@@ -112,7 +112,7 @@ def get_post_categories():
         post_categorys.append("%s" % (p.category2_id))
 
     #Extract list values and appears count
-    c=Counter(post_categorys)
+    c = Counter(post_categorys)
 
     appears = c.values();
     values = c.keys();
