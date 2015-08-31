@@ -6,6 +6,7 @@ from .models import Post
 from .forms import PostForm
 from .forms import ContactForm
 from collections import Counter
+from django.db.models import Q
 
 def principal(request):
 
@@ -40,6 +41,35 @@ def post_list(request):
     # import pdb
     # pdb.set_trace()
     return render(request, 'blog/post_list.html', {'posts': posts, 'post_categorys': get_post_categories()})
+
+    #Class to test filt by category...
+def post_list_by_category(request, category):
+    # Add "-" inside 'order by' element to change publish order
+    """posts = Post.objects.filter(published_date__lte=timezone.now()).filter(Q(category1_id=category) | Q(category2_id=category)).exclude(post_type_id='Inicio').order_by('-published_date')
+
+    p_count = Post.objects.all().count()
+
+    post_per_page = 10
+
+    pages = round(p_count / post_per_page, 0)
+
+    if (p_count % post_per_page > 0):
+        pages = pages + 1
+
+    #print "Post total: %s" % (p_count)
+    #print "Pages total: %s" % (pages)"""
+
+    """p = Post.objects.all().annotate(Count('title',
+                                         distinct=True))"""
+
+    print (category)
+
+    ###print p.count()
+
+    # import pdb
+    # pdb.set_trace()
+    return render(request, 'blog/about.html', {'post_categorys': get_post_categories()})
+    #, {'posts': posts, 'post_categorys': get_post_categories()}
 
 def post_detail(request, pk):
     post = get_object_or_404(Post, pk=pk)
