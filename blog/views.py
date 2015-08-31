@@ -14,17 +14,11 @@ def principal(request):
     for p in main:
         main_object.append(p)
 
-    c=Counter(main_object)
-    print (len(main_object))
-    print (main_object[0])
-    print (main_object[0].title)
-    print (main_object[0].description)
-
     return render(request, 'blog/principal.html', {'post_categorys': get_post_categories(), 'main_post': main_object[0]})
 
 def post_list(request):
     # Add "-" inside 'order by' element to change publish order
-    posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('-published_date')
+    posts = Post.objects.filter(published_date__lte=timezone.now()).exclude(post_type_id='Inicio').order_by('-published_date')
 
     p_count = Post.objects.all().count()
 
