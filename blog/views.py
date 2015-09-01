@@ -45,7 +45,7 @@ def post_list(request):
     #Class to test filt by category...
 def post_list_by_category(request, category):
     # Add "-" inside 'order by' element to change publish order
-    posts = Post.objects.filter(published_date__lte=timezone.now()).filter(Q(category1_id=category) | Q(category2_id=category)).exclude(post_type_id='Inicio').order_by('-published_date')
+    posts = Post.objects.filter(published_date__lte=timezone.now()).filter(Q(category1_id=category) | Q(category2_id=category)).exclude(post_type_id='Inicio').order_by('-published_date').filter(active=1)
 
     print (category)
     print (posts.count())
@@ -55,7 +55,7 @@ def post_list_by_category(request, category):
 
     # import pdb
     # pdb.set_trace()
-    return render(request, 'blog/about.html', {'post_categorys': get_post_categories()})
+    return render(request, 'blog/post_list.html', {'posts': posts, 'post_categorys': get_post_categories()})
     #, {'posts': posts, 'post_categorys': get_post_categories()}
 
 def post_detail(request, pk):
@@ -119,8 +119,8 @@ def get_post_categories():
 
     #create method to short code...
 
-    category_1 = Post.objects.raw('SELECT id, category1_id FROM blog_post')
-    category_2 = Post.objects.raw('SELECT id, category2_id FROM blog_post')
+    category_1 = Post.objects.raw('SELECT id, category1_id FROM blog_post WHERE active=1 AND post_type_id <> "Inicio"')
+    category_2 = Post.objects.raw('SELECT id, category2_id FROM blog_post WHERE active=1 AND post_type_id <> "Inicio"')
 
     for p in category_1:
         post_categorys.append("%s" % (p.category1_id))
