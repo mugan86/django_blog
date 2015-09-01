@@ -75,9 +75,9 @@ class Contact(models.Model):
     Contact propert
     """
     id = models.AutoField(primary_key=True)
-    name = models.CharField(max_length=100)
-    email = models.CharField(max_length=100)
-    message = models.TextField()
+    name = models.CharField("Nombre", max_length=100)
+    email = models.CharField("Correo electrónico" , max_length=100)
+    message = models.TextField("Mensaje")
     received_date = models.DateTimeField(
                 default=timezone.now)
 
