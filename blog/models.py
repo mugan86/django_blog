@@ -12,20 +12,20 @@ class Post(models.Model):
     Post propert
     """
     author = models.ForeignKey('auth.User')
-    title = models.CharField(max_length=200)
-    description = models.CharField(max_length=200)
+    title = models.CharField("Título", max_length=200)
+    description = models.CharField("Descripción", max_length=200)
     text = RichTextField()
-    source = models.CharField(max_length=250)
-    source_title = models.CharField(max_length=200)
+    source = models.CharField("Fuente", max_length=250)
+    source_title = models.CharField("Título fuente", max_length=200)
     category1 = models.ForeignKey('Category', related_name='category1')
     category2 = models.ForeignKey('Category', related_name='category2')
     post_type = models.ForeignKey('PostType');
-    the_most_important = models.BooleanField(default=False)
-    active = models.BooleanField(default=True)
+    the_most_important = models.BooleanField("¿Destacado?", default=False)
+    active = models.BooleanField("¿Activo?", default=True)
     created_date = models.DateTimeField(
-                default=timezone.now)
+                "Fecha de creación" , default=timezone.now)
     published_date = models.DateTimeField(
-                default=timezone.now)
+                "Fecha de publicación" , default=timezone.now)
 
     def publish(self):
         self.published_date = timezone.now()
