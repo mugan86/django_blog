@@ -12,20 +12,20 @@ class Post(models.Model):
     Post propert
     """
     author = models.ForeignKey('auth.User')
-    title = models.CharField("Título", max_length=200)
-    description = models.CharField("Descripción", max_length=200)
-    text = RichTextField()
-    source = models.CharField("Fuente", max_length=250)
-    source_title = models.CharField("Título fuente", max_length=200)
+    title = models.CharField('Título', max_length=200)
+    description = models.CharField('Descripción', max_length=200)
+    text = RichTextField('Contenido')
+    source = models.CharField('Fuente', max_length=250)
+    source_title = models.CharField('Título fuente', max_length=200)
     category1 = models.ForeignKey('Category', related_name='category1')
     category2 = models.ForeignKey('Category', related_name='category2')
     post_type = models.ForeignKey('PostType');
-    the_most_important = models.BooleanField("¿Destacado?", default=False)
-    active = models.BooleanField("¿Activo?", default=True)
+    the_most_important = models.BooleanField('¿Destacado?', default=False)
+    active = models.BooleanField('¿Activo?', default=True)
     created_date = models.DateTimeField(
-                "Fecha de creación" , default=timezone.now)
+                'Fecha de creación' , default=timezone.now)
     published_date = models.DateTimeField(
-                "Fecha de publicación" , default=timezone.now)
+                'Fecha de publicación' , default=timezone.now)
 
     def publish(self):
         self.published_date = timezone.now()
@@ -37,12 +37,12 @@ class Post(models.Model):
 class PostType(models.Model):
     """Manage post type data to classified in different types (blog, videos, articles,...)"""
 
-    name = models.CharField(max_length=100, primary_key=True)
-    description = RichTextField()
-    active = models.BooleanField(default=False)
-    created_date = models.DateTimeField(
+    name = models.CharField('Nombre', max_length=100, primary_key=True)
+    description = RichTextField('Descripción')
+    active = models.BooleanField('¿Activo?', default=False)
+    created_date = models.DateTimeField('Fecha de creación',
                 default=timezone.now)
-    published_date = models.DateTimeField(
+    published_date = models.DateTimeField('Fecha de publicación',
                 default=timezone.now)
 
     def publish(self):
@@ -56,11 +56,11 @@ class Category(models.Model):
     """
     Category propert
     """
-    title = models.CharField(max_length=200, primary_key=True)
-    description = models.TextField()
-    created_date = models.DateTimeField(
+    title = models.CharField('Título', max_length=200, primary_key=True)
+    description = models.TextField("Descripción")
+    created_date = models.DateTimeField('Fecha de creación',
                 default=timezone.now)
-    published_date = models.DateTimeField(
+    published_date = models.DateTimeField('Fecha de publicación',
                 default=timezone.now)
 
     def publish(self):
@@ -78,7 +78,7 @@ class Contact(models.Model):
     name = models.CharField("Nombre", max_length=100)
     email = models.CharField("Correo electrónico" , max_length=100)
     message = models.TextField("Mensaje")
-    received_date = models.DateTimeField(
+    received_date = models.DateTimeField('Recibido',
                 default=timezone.now)
 
     def publish(self):
@@ -93,17 +93,17 @@ class Project(models.Model):
     Project propert
     """
     id = models.AutoField(primary_key=True)
-    name = models.CharField(max_length=150)
-    description = RichTextField()
+    name = models.CharField('Nombre', max_length=150)
+    description = RichTextField('Descripción')
     category = models.ForeignKey('Category')
-    source = models.CharField(max_length=250)
-    source_title = models.CharField(max_length=200)
-    photo_url = models.CharField(max_length=255)
-    finish = models.BooleanField(default=False)
-    active = models.BooleanField(default=True)
-    start_project_date = models.DateTimeField(
+    source = models.CharField('Fuente', max_length=250)
+    source_title = models.CharField('Título de la fuente', max_length=200)
+    photo_url = models.CharField('Imagen', max_length=255)
+    finish = models.BooleanField('¿Finalizado', default=False)
+    active = models.BooleanField('¿Activo?', default=True)
+    start_project_date = models.DateTimeField('Fecha de inicio',
                 default=timezone.now)
-    published_date = models.DateTimeField(
+    published_date = models.DateTimeField('Fecha de publicación',
                 default=timezone.now)
 
     def publish(self):
