@@ -155,5 +155,15 @@ If you are on Python 3, you can skip this section because you’ll always create
 
 https://docs.djangoproject.com/en/1.8/ref/unicode/
 
+#Could not parse the remainder: '[0]' from 'item[0]' Django
+
+http://stackoverflow.com/questions/19895894/could-not-parse-the-remainder-0-from-item0-django
+
+Use item.0 instead of item[0]
+
+```sh
+{{ item.0 }}
+```
+
 
 
