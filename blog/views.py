@@ -19,7 +19,7 @@ def principal(request):
 
 def post_list(request):
     # Add "-" inside 'order by' element to change publish order
-    posts = Post.objects.filter(published_date__lte=timezone.now()).exclude(post_type_id='Inicio').order_by('-published_date')
+    posts = Post.objects.filter(published_date__lte=timezone.now()).exclude(post_type_id='Inicio').filter(active=1).order_by('-published_date')
 
     p_count = Post.objects.all().count()
 
