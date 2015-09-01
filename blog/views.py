@@ -45,24 +45,11 @@ def post_list(request):
     #Class to test filt by category...
 def post_list_by_category(request, category):
     # Add "-" inside 'order by' element to change publish order
-    """posts = Post.objects.filter(published_date__lte=timezone.now()).filter(Q(category1_id=category) | Q(category2_id=category)).exclude(post_type_id='Inicio').order_by('-published_date')
-
-    p_count = Post.objects.all().count()
-
-    post_per_page = 10
-
-    pages = round(p_count / post_per_page, 0)
-
-    if (p_count % post_per_page > 0):
-        pages = pages + 1
-
-    #print "Post total: %s" % (p_count)
-    #print "Pages total: %s" % (pages)"""
-
-    """p = Post.objects.all().annotate(Count('title',
-                                         distinct=True))"""
+    posts = Post.objects.filter(published_date__lte=timezone.now()).filter(Q(category1_id=category) | Q(category2_id=category)).exclude(post_type_id='Inicio').order_by('-published_date')
 
     print (category)
+    print (posts.count())
+    print (posts)
 
     ###print p.count()
 
@@ -152,7 +139,9 @@ def get_post_categories():
     #Store data string in post_categorys[] list
     for x in c.keys():
         print ("%s (%s)" % (x, c[x]))
-        post_categorys.append("%s (%s)" % (x, c[x]))
+        category_object = [x,"%s (%s)" % (x, c[x])]
+        #post_categorys.append("%s (%s)" % (x, c[x]))
+        post_categorys.append(category_object)
 
     return post_categorys
 
