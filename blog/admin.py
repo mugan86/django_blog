@@ -10,7 +10,7 @@ from .models import FriendType
 
 
 class PostAdmin(admin.ModelAdmin):
-    list_display = ('author', 'title', 'description', 'text', 'active' , 'created_date','published_date', )
+    list_display = ('author', 'title', 'description', 'text', 'active' , 'category1', 'category2', 'published_date', )
     list_filter = ('author', 'published_date')
     ordering = ('-published_date',)
     search_fields = ('title',)
