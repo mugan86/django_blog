@@ -26,7 +26,7 @@
         <h4> Categories</h4>
         <ul>
             {% for cat in post_categorys %}
-                <li>{{ cat }}</li>
+                <li><a href="/post/category/{{ cat.0 }}">{{ cat.1 }}</li>
             {% endfor %}
         </ul>
     </div>
