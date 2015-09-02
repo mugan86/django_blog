@@ -3,6 +3,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.utils import timezone
 from django.db.models import Count
 from .models import Post
+from .models import Event
 from .forms import PostForm
 from .forms import ContactForm
 from collections import Counter
@@ -14,8 +15,7 @@ def principal(request):
     main = Post.objects.raw('SELECT * FROM blog_post WHERE post_type_id="Inicio" AND active = 1 ORDER BY published_date DESC')
     for p in main:
         main_object.append(p)
-
-    return render(request, 'blog/principal.html', {'post_categorys': get_post_categories(), 'main_post': main_object[0]})
+    return render(request, 'blog/principal.html', {'post_categorys': get_post_categories(), 'main_post': main_object[0], 'events': get_next_events()})
 
 def post_list(request):
     # Add "-" inside 'order by' element to change publish order
@@ -40,7 +40,7 @@ def post_list(request):
 
     # import pdb
     # pdb.set_trace()
-    return render(request, 'blog/post_list.html', {'posts': posts, 'post_categorys': get_post_categories()})
+    return render(request, 'blog/post_list.html', {'posts': posts, 'post_categorys': get_post_categories(), 'events': get_next_events()})
 
     #Class to test filt by category...
 def post_list_by_category(request, category):
@@ -55,12 +55,12 @@ def post_list_by_category(request, category):
 
     # import pdb
     # pdb.set_trace()
-    return render(request, 'blog/post_list.html', {'posts': posts, 'post_categorys': get_post_categories()})
+    return render(request, 'blog/post_list.html', {'posts': posts, 'post_categorys': get_post_categories(), 'events': get_next_events()})
     #, {'posts': posts, 'post_categorys': get_post_categories()}
 
 def post_detail(request, pk):
     post = get_object_or_404(Post, pk=pk)
-    return render(request, 'blog/post_detail.html', {'post': post, 'post_categorys': get_post_categories()})
+    return render(request, 'blog/post_detail.html', {'post': post, 'post_categorys': get_post_categories(), 'events': get_next_events()})
 
 def post_new(request):
 
@@ -74,7 +74,7 @@ def post_new(request):
             return redirect('blog.views.post_detail', pk=post.pk)
     else:
         form = PostForm()
-    return render(request, 'blog/post_edit.html', {'form': form, 'title': title, 'post_categorys': get_post_categories()})
+    return render(request, 'blog/post_edit.html', {'form': form, 'title': title, 'post_categorys': get_post_categories(), 'events': get_next_events()})
 
 def post_edit(request, pk):
         title = "Edit select post"
@@ -88,7 +88,7 @@ def post_edit(request, pk):
                 return redirect('blog.views.post_detail', pk=post.pk)
         else:
             form = PostForm(instance=post)
-        return render(request, 'blog/post_edit.html', {'form': form, 'title': title, 'post_categorys': get_post_categories()})
+        return render(request, 'blog/post_edit.html', {'form': form, 'title': title, 'post_categorys': get_post_categories(), 'events': get_next_events()})
 
 def contact_new(request):
 
@@ -105,11 +105,11 @@ def contact_new(request):
     else:
         form = ContactForm()
 
-    return render(request, 'blog/post_edit.html', {'form': form, 'title': title, 'post_categorys': get_post_categories()})
+    return render(request, 'blog/post_edit.html', {'form': form, 'title': title, 'post_categorys': get_post_categories(), 'events': get_next_events()})
 
 def about(request):
 
-    return render(request, 'blog/about.html', {'post_categorys': get_post_categories()})
+    return render(request, 'blog/about.html', {'post_categorys': get_post_categories(), 'events': get_next_events()})
 
 """def contact(request):
     return render(request, 'blog/contact.html')"""
@@ -138,10 +138,13 @@ def get_post_categories():
 
     #Store data string in post_categorys[] list
     for x in c.keys():
-        print ("%s (%s)" % (x, c[x]))
+        #print ("%s (%s)" % (x, c[x]))
         category_object = [x,"%s (%s)" % (x, c[x])]
         #post_categorys.append("%s (%s)" % (x, c[x]))
         post_categorys.append(category_object)
 
     return post_categorys
+
+def get_next_events():
+    return Event.objects.all()
 
