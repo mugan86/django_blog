@@ -149,6 +149,7 @@ class Event(models.Model):
     name = models.CharField('Nombre', max_length=150)
     description = models.CharField('Descripción', max_length=250)
     url = models.CharField('Más información', max_length=150)
+    logotype = models.CharField('Logotipo', max_length=200)
     celebrate_data = models.DateTimeField("Fecha y Hora")
     published_date = models.DateTimeField("Fecha publicación", default=timezone.now)
 
