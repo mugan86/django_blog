@@ -7,6 +7,7 @@ from .models import Contact
 from .models import Project
 from .models import Friend
 from .models import FriendType
+from .models import Event
 
 
 class PostAdmin(admin.ModelAdmin):
@@ -39,6 +40,9 @@ class FriendAdmin(admin.ModelAdmin):
 class FriendTypeAdmin(admin.ModelAdmin):
     list_display = ('name', 'description', 'active', 'add_data')
 
+class EventAdmin(admin.ModelAdmin):
+    list_display = ('name', 'description', 'url', 'celebrate_data')
+
 admin.site.register(Post, PostAdmin)
 admin.site.register(PostType, PostTypeAdmin)
 admin.site.register(Category, CategoryAdmin)
@@ -46,3 +50,4 @@ admin.site.register(Contact, ContactAdmin)
 admin.site.register(Project, ProjectAdmin)
 admin.site.register(Friend, FriendAdmin)
 admin.site.register(FriendType, FriendTypeAdmin)
+admin.site.register(Event, EventAdmin)
