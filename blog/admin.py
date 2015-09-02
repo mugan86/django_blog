@@ -41,7 +41,7 @@ class FriendTypeAdmin(admin.ModelAdmin):
     list_display = ('name', 'description', 'active', 'add_data')
 
 class EventAdmin(admin.ModelAdmin):
-    list_display = ('name', 'description', 'url', 'celebrate_data')
+    list_display = ('name', 'description', 'url', 'logotype' ,'celebrate_data')
 
 admin.site.register(Post, PostAdmin)
 admin.site.register(PostType, PostTypeAdmin)
