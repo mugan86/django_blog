@@ -31,7 +31,7 @@ class Post(models.Model):
         self.published_date = timezone.now()
         self.save()
 
-    def __str__(self):
+    def __unicode__(self):
         return u'%s' % self.title
 
 class PostType(models.Model):
@@ -49,7 +49,7 @@ class PostType(models.Model):
         self.published_date = timezone.now()
         self.save()
 
-    def __str__(self):
+    def __unicode__(self):
         return u'%s' % self.name
 
 class Category(models.Model):
@@ -67,7 +67,7 @@ class Category(models.Model):
         self.published_date = timezone.now()
         self.save()
 
-    def __str__(self):
+    def __unicode__(self):
         return u'%s' % self.title
 
 class Contact(models.Model):
@@ -85,7 +85,7 @@ class Contact(models.Model):
         self.received_date = timezone.now()
         self.save()
 
-    def __str__(self):
+    def __unicode__(self):
         return u'%s' % self.name
 
 class Project(models.Model):
@@ -110,7 +110,7 @@ class Project(models.Model):
         self.published_date = timezone.now()
         self.save()
 
-    def __str__(self):
+    def __unicode__(self):
         return u'%s' % self.name
 
 class Friend(models.Model):
@@ -128,7 +128,7 @@ class Friend(models.Model):
         self.add_data = timezone.now()
         self.save()
 
-    def __str__(self):
+    def __unicode__(self):
         return u'%s' % self.name
 
 class FriendType(models.Model):
@@ -141,7 +141,7 @@ class FriendType(models.Model):
         self.add_data = timezone.now()
         self.save()
 
-    def __str__(self):
+    def __unicode__(self):
         return u'%s' % self.name
 
 class Event(models.Model):
@@ -157,7 +157,7 @@ class Event(models.Model):
         self.published_date = timezone.now()
         self.save()
 
-    def __str__ (self):
+    def __unicode__(self):
         return u'%s' % self.name
 
 
