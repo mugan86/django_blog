@@ -47,9 +47,9 @@ def post_list_by_category(request, category):
     # Add "-" inside 'order by' element to change publish order
     posts = Post.objects.filter(published_date__lte=timezone.now()).filter(Q(category1_id=category) | Q(category2_id=category)).exclude(post_type_id='Inicio').order_by('-published_date').filter(active=1)
 
-    print (category)
+    """print (category)
     print (posts.count())
-    print (posts)
+    print (posts)"""
 
     ###print p.count()
 
