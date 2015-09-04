@@ -100,57 +100,52 @@
                         {% endautoescape %}
                     </div>
                     <div class="col-sm-3">
-                        <div class="well">
-                            <h4>Categorias</h4>
-                            <ul>
-                                {% for cat in post_categorys %}
-                                    <li><a href="/post/category/{{ cat.0 }}">{{ cat.1 }}</a></li>
-                                {% endfor %}
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-sm-3">
-                        <div class="well">
-                            <h4>Pr&oacute;ximos eventos</h4>
-                            {% for event in events %}
-                                {{event.name}}
+
+                        <h4>Categorias</h4>
+                        <ul>
+                            {% for cat in post_categorys %}
+                                <li><a href="/post/category/{{ cat.0 }}">{{ cat.1 }}</a></li>
                             {% endfor %}
-                            <div class="panel-group" id="accordion">
-                              <!-- First Panel -->
-                              <div class="panel panel-default">
-                                  <div class="panel-heading">
-                                       <h4 class="panel-title" data-toggle="collapse" data-target="#collapseOne">
-                                           Collapsible Group Item #1
-                                       </h4>
+                        </ul>
+                        <h4>Pr&oacute;ximos eventos</h4>
+                        {% for event in events %}
+                            {{event.name}}
+                        {% endfor %}
+                        <div class="panel-group" id="accordion">
 
-                                  </div>
-                                  <div id="collapseOne" class="panel-collapse collapse">
-                                      <div class="panel-body">Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid.</div>
-                                  </div>
+                          <div class="panel panel-default">
+                              <div class="panel-heading">
+                                   <h4 class="panel-title" data-toggle="collapse" data-target="#collapseOne">
+                                       Collapsible Group Item #1
+                                   </h4>
+
                               </div>
-                              <!-- Second Panel -->
-                              <div class="panel panel-default">
-                                  <div class="panel-heading">
-                                       <h4 class="panel-title" data-toggle="collapse" data-target="#collapseTwo">
-                                           Collapsible Group Item #2
-                                       </h4>
-
-                                  </div>
-                                  <div id="collapseTwo" class="panel-collapse collapse">
-                                      <div class="panel-body">Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid.</div>
-                                  </div>
+                              <div id="collapseOne" class="panel-collapse collapse">
+                                  <div class="panel-body">Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid.</div>
                               </div>
-                              <!-- Third Panel -->
-                              <div class="panel panel-default">
-                                  <div class="panel-heading">
-                                       <h4 class="panel-title" data-toggle="collapse" data-target="#collapseThree">
-                                           Collapsible Group Item #3
-                                       </h4>
+                          </div>
 
-                                  </div>
-                                  <div id="collapseThree" class="panel-collapse collapse">
-                                      <div class="panel-body">Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid.</div>
-                                  </div>
+                          <div class="panel panel-default">
+                              <div class="panel-heading">
+                                   <h4 class="panel-title" data-toggle="collapse" data-target="#collapseTwo">
+                                       Collapsible Group Item #2
+                                   </h4>
+
+                              </div>
+                              <div id="collapseTwo" class="panel-collapse collapse">
+                                  <div class="panel-body">Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid.</div>
+                              </div>
+                          </div>
+
+                          <div class="panel panel-default">
+                              <div class="panel-heading">
+                                   <h4 class="panel-title" data-toggle="collapse" data-target="#collapseThree">
+                                       Collapsible Group Item #3
+                                   </h4>
+
+                              </div>
+                              <div id="collapseThree" class="panel-collapse collapse">
+                                  <div class="panel-body">Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid.</div>
                               </div>
                           </div>
                         </div>
@@ -232,9 +227,11 @@
     });
 
     </script>
-        <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
-      <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
-      <script src='http://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js'></script>
+        <!--<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+        <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+        <script src='http://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js'></script>-->
+        <script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
+        <script type="text/javascript" src="js/bootstrap.min.js"></script>
        <!-- jQuery -->
 
       <!-- Bootstrap Core JavaScript -->
