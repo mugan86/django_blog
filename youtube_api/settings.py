@@ -25,7 +25,7 @@ SECRET_KEY = 'vmq$27c5e&aplp$w17h$^4gs#i7_5ai5m_ec5nr$wa0le2#76$'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
