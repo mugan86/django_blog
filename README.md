@@ -165,5 +165,9 @@ Use item.0 instead of item[0]
 {{ item.0 }}
 ```
 
+#Permission problems (is not writable user local bin)
+
+http://stackoverflow.com/questions/26647412/homebrew-could-not-symlink-usr-local-bin-is-not-writable
+
 
 
