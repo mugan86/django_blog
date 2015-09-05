@@ -113,12 +113,12 @@
                           {% for event in events %}
                               <div class="panel panel-default">
                               <div class="panel-heading">
-                                   <h4 class="panel-title" data-toggle="collapse" data-target="#collapse1">
+                                   <h4 class="panel-title" data-toggle="collapse" data-target="#collapse{{forloop.counter}}">
                                        {{event.name}}
                                    </h4>
 
                               </div>
-                              <div id="collapse1" class="panel-collapse collapse">
+                              <div id="collapse{{forloop.counter}}" class="panel-collapse collapse">
                                   <div class="panel-body">Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid.</div>
                               </div>
                           </div>
