@@ -169,5 +169,9 @@ Use item.0 instead of item[0]
 
 http://stackoverflow.com/questions/26647412/homebrew-could-not-symlink-usr-local-bin-is-not-writable
 
+#For Loop Counter inside template:
+
+http://stackoverflow.com/questions/11481499/django-iterate-number-in-for-loop-of-a-template
+
 
 
