@@ -89,11 +89,9 @@
 
     <div class="container">
 
-        <div class="row">
-            <div class="col-lg-5 col-md-6 col-sm-8">
-              <div class="content container">
+        
                 <div class="row">
-                    <div class="col-sm-9">
+                    <div class="col-sm-9 event">
                         {% autoescape off %}
                             {% block content %}
                             {% endblock %}
@@ -124,12 +122,27 @@
                           </div>
                           {% endfor %}
                         </div>
-                    </div>
-                </div>
-              </div>
+                    
             </div><!--/.col-xs-12 -->
         </div><!--/.row -->
-
+        <div class="row">
+          {% for event in events %}
+          <div class="col-sm-4 event">
+            <div class="thumbnail">
+              <div class="overlay"></div>
+              <img class="img-responsive" alt="alternative text" src="http://lorempixel.com/800/400/nightlife?{{forloop.counter}}">
+            </div>
+            <span class="label label-info date">Jun 12</span> 
+            <span class="label label-primary">Boys 5$</span>
+            <span class="label label-danger">Girls FREE</span>
+            <p>
+              <strong>{{event.name}}</strong><br>
+              <em>at Grand Hotel Italia</em><br>
+              <span class="small">10:00 AM - 21:00 PM</span>
+            </p>
+          </div>
+          {% endfor %}
+        </div>
     </div><!--/.container -->
     <!-- Footer -->
     <footer>
