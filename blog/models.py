@@ -177,3 +177,21 @@ class EventType(models.Model):
     def __unicode__(self):
         return u'%s' % self.name
 
+class Location(models.Model):
+    id = models.CharField(primary_key=True, max_length=50)
+    name = models.CharField(max_length=50)
+    province = models.CharField(max_length=50)
+    region = models.CharField(max_length=100)
+    region_eus = models.CharField(max_length=100)
+    longitude = models.FloatField("Longitud", validators = [MinValueValidator(0.0), MaxValueValidator(10000000)], default=0)
+    latitude = models.FloatField("Latitud", validators = [MinValueValidator(0.0), MaxValueValidator(10000000)], default=0)
+    region_ca= models.CharField(max_length=100)
+    published_date = models.DateTimeField(default=timezone.now)
+
+    def publish(self):
+        self.published_date = timezone.now()
+        self.save()
+
+    def __unicode__(self):
+        return u'%s' % self.name
+
