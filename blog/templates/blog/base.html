@@ -60,7 +60,14 @@
                       </li>
                       <li>
                         <a href="/admin">Admin</a>
-                    </li>
+                        </li>
+                        <li>
+                            <a href="/accounts/logout">Cerrar sesión</a>
+                        <li/>
+                        {% else %}
+                        <li>
+                        <a href="/accounts/login/">login</a>
+                        </li>
                       {% endif %}
                   </ul>
               </div>
