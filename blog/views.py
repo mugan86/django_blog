@@ -1,5 +1,6 @@
 # -*- encoding: utf-8 -*-
 from django.shortcuts import render, get_object_or_404, redirect
+from django.contrib.auth import logout
 from django.utils import timezone
 from django.db.models import Count
 from .models import Post, Event
@@ -120,8 +121,14 @@ def contact_new(request):
     return render(request, 'blog/post_edit.html', {'form': form, 'title': title, 'post_categorys': get_post_categories(), 'events': get_next_events()})
 
 def about(request):
-
     return render(request, 'blog/about.html', {'post_categorys': get_post_categories(), 'events': get_next_events()})
+
+def login_form(request):
+    return render(request, 'blog/login.html', {'post_categorys': get_post_categories(), 'events': get_next_events()})
+
+def logout_account(request):
+    logout(request)
+    return redirect('blog.views.principal')
 
 """def contact(request):
     return render(request, 'blog/contact.html')"""
