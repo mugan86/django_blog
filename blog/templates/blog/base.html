@@ -1,5 +1,4 @@
 {% load staticfiles %}
-{% load tz %}
 <html>
     <head>
         <title>Anartz Mugika - Blog</title>
@@ -145,7 +144,12 @@
             </span>
             <p>
               <strong>{{event.name}}</strong><br>
-              <em>{{event.location.name}}</em><br>
+              <em>
+                <a href="http://www.google.com/maps/place/{{event.location.latitude}},{{event.location.longitude}}/@{{event.location.latitude}},{{event.location.longitude}},14z">
+                    {{event.location.name}}
+                </a>
+              </em>
+              <br/>
               <span class="small">{{event.celebrate_data}}</span>
             </p>
             {% if user.is_authenticated %}
