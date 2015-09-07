@@ -1,4 +1,5 @@
 {% load staticfiles %}
+{% load tz %}
 <html>
     <head>
         <title>Anartz Mugika - Blog</title>
@@ -144,8 +145,8 @@
             </span>
             <p>
               <strong>{{event.name}}</strong><br>
-              <em>at Grand Hotel Italia</em><br>
-              <span class="small">{{event.celebrate_data.date}}</span>
+              <em>{{event.location.name}}</em><br>
+              <span class="small">{{event.celebrate_data}}</span>
             </p>
             {% if user.is_authenticated %}
                 <a class="btn btn-default" href="{% url "event_edit" pk=event.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
