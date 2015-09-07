@@ -1,6 +1,6 @@
 # -*- encoding: utf-8 -*-
 from django.contrib import admin
-from .models import Post, PostType, Category, Contact, Project, Friend, FriendType, Event, EventType
+from .models import Post, PostType, Category, Contact, Project, Friend, FriendType, Event, EventType, Location
 
 
 class PostAdmin(admin.ModelAdmin):
@@ -39,6 +39,9 @@ class EventAdmin(admin.ModelAdmin):
 class EventTypeAdmin(admin.ModelAdmin):
     list_display = ('name', 'description', 'category', 'free' ,'published_date')
 
+class LocationAdmin(admin.ModelAdmin):
+    list_display = ('name', 'province', 'region', 'longitude' ,'latitude')
+
 admin.site.register(Post, PostAdmin)
 admin.site.register(PostType, PostTypeAdmin)
 admin.site.register(Category, CategoryAdmin)
@@ -48,3 +51,4 @@ admin.site.register(Friend, FriendAdmin)
 admin.site.register(FriendType, FriendTypeAdmin)
 admin.site.register(Event, EventAdmin)
 admin.site.register(EventType, EventTypeAdmin)
+admin.site.register(Location, LocationAdmin)
