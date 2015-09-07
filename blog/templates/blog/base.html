@@ -127,7 +127,8 @@
         </div><!--/.row -->
         <div class="row">
           {% for event in events %}
-          <div class="col-sm-4 event">
+          <div class="col-sm-4">
+            <!--event in class-->
             <div class="thumbnail">
               <div class="overlay"></div>
               <img class="img-responsive" alt="alternative text" src="http://lorempixel.com/800/400/nightlife?{{forloop.counter}}">
@@ -144,8 +145,11 @@
             <p>
               <strong>{{event.name}}</strong><br>
               <em>at Grand Hotel Italia</em><br>
-              <span class="small">{{event.celebrate_data.time}}</span>
+              <span class="small">{{event.celebrate_data.date}}</span>
             </p>
+            {% if user.is_authenticated %}
+                <a class="btn btn-default" href="{% url "event_edit" pk=event.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
+            {% endif %}
           </div>
           {% endfor %}
         </div>
