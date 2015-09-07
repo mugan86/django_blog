@@ -153,6 +153,7 @@ class Event(models.Model):
     type = models.ForeignKey("EventType", related_name="Tipo", default="Carrera")
     logotype = models.CharField('Logotipo', max_length=200)
     price = models.FloatField("Precio", validators = [MinValueValidator(0.0), MaxValueValidator(10000000)], default=0)
+    location = models.ForeignKey('Location')
     celebrate_data = models.DateTimeField("Fecha y Hora")
     published_date = models.DateTimeField("Fecha publicación", default=timezone.now)
 
@@ -183,8 +184,8 @@ class Location(models.Model):
     province = models.CharField(max_length=50)
     region = models.CharField(max_length=100)
     region_eus = models.CharField(max_length=100)
-    longitude = models.FloatField("Longitud", validators = [MinValueValidator(0.0), MaxValueValidator(10000000)], default=0)
-    latitude = models.FloatField("Latitud", validators = [MinValueValidator(0.0), MaxValueValidator(10000000)], default=0)
+    longitude = models.FloatField("Longitud", validators = [MinValueValidator(-100000), MaxValueValidator(10000000)], default=0)
+    latitude = models.FloatField("Latitud", validators = [MinValueValidator(-1000000), MaxValueValidator(10000000)], default=0)
     region_ca= models.CharField(max_length=100)
     published_date = models.DateTimeField(default=timezone.now)
 
