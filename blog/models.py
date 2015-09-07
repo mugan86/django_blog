@@ -2,6 +2,7 @@
 from django.db import models
 from django.utils import timezone
 from ckeditor.fields import RichTextField
+from django.core.validators import MaxValueValidator, MinValueValidator
 
 """
 def __str__(self) instead of def __unicode__(self) in python3. Set Unicode and no error (in python2 must be __unicode__)
@@ -149,7 +150,9 @@ class Event(models.Model):
     name = models.CharField('Nombre', max_length=150)
     description = models.CharField('Descripción', max_length=250)
     url = models.CharField('Más información', max_length=150)
+    type = models.ForeignKey("EventType", related_name="Tipo", default="Carrera")
     logotype = models.CharField('Logotipo', max_length=200)
+    price = models.FloatField("Precio", validators = [MinValueValidator(0.0), MaxValueValidator(10000000)], default=0)
     celebrate_data = models.DateTimeField("Fecha y Hora")
     published_date = models.DateTimeField("Fecha publicación", default=timezone.now)
 
