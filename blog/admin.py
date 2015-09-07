@@ -34,7 +34,7 @@ class FriendTypeAdmin(admin.ModelAdmin):
     list_display = ('name', 'description', 'active', 'add_data')
 
 class EventAdmin(admin.ModelAdmin):
-    list_display = ('name', 'description', 'url', 'logotype' ,'celebrate_data')
+    list_display = ('name', 'description', 'type', 'url', 'logotype' ,'celebrate_data')
 
 class EventTypeAdmin(admin.ModelAdmin):
     list_display = ('name', 'description', 'category', 'free' ,'published_date')
