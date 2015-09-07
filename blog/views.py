@@ -165,5 +165,6 @@ def get_post_categories():
     return post_categorys
 
 def get_next_events():
-    return Event.objects.all()
+    ##Show next 3 events
+    return Event.objects.filter(celebrate_data__gte=timezone.now()).order_by('celebrate_data')[:3]
 
