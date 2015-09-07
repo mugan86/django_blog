@@ -2,10 +2,8 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.utils import timezone
 from django.db.models import Count
-from .models import Post
-from .models import Event
-from .forms import PostForm
-from .forms import ContactForm
+from .models import Post, Event
+from .forms import PostForm, EventForm, ContactForm
 from collections import Counter
 from django.db.models import Q
 
@@ -88,6 +86,20 @@ def post_edit(request, pk):
                 return redirect('blog.views.post_detail', pk=post.pk)
         else:
             form = PostForm(instance=post)
+        return render(request, 'blog/post_edit.html', {'form': form, 'title': title, 'post_categorys': get_post_categories(), 'events': get_next_events()})
+
+#url(r'^event/(?P<pk>[0-9]+)/edit/$', views.event_edit, name='event_edit'), in urls.py file
+def event_edit(request, pk):
+        title = "Edit select post"
+        event = get_object_or_404(Event, pk=pk)
+        if request.method == "POST":
+            form = EventForm(request.POST, instance=event)
+            if form.is_valid():
+                event = form.save(commit=False)
+                event.save()
+                return redirect('blog.views.principal')
+        else:
+            form = EventForm(instance=event)
         return render(request, 'blog/post_edit.html', {'form': form, 'title': title, 'post_categorys': get_post_categories(), 'events': get_next_events()})
 
 def contact_new(request):
