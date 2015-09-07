@@ -89,7 +89,7 @@
 
     <div class="container">
 
-        
+
                 <div class="row">
                     <div class="col-sm-9 event">
                         {% autoescape off %}
@@ -107,7 +107,7 @@
                         </ul>
                         <h4>Pr&oacute;ximos eventos</h4>
                         <div class="panel-group" id="accordion">
-                          
+
                           {% for event in events %}
                               <div class="panel panel-default">
                               <div class="panel-heading">
@@ -122,7 +122,7 @@
                           </div>
                           {% endfor %}
                         </div>
-                    
+
             </div><!--/.col-xs-12 -->
         </div><!--/.row -->
         <div class="row">
@@ -132,13 +132,19 @@
               <div class="overlay"></div>
               <img class="img-responsive" alt="alternative text" src="http://lorempixel.com/800/400/nightlife?{{forloop.counter}}">
             </div>
-            <span class="label label-info date">Jun 12</span> 
-            <span class="label label-primary">Boys 5$</span>
-            <span class="label label-danger">Girls FREE</span>
+            <span class="label label-info date">{{event.celebrate_data.date}}</span>
+            <span class="label label-primary">{{event.type}}</span>
+            <span class="label label-danger">
+                {% if event.price == 0 %}
+                    FREE
+                {% else %}
+                    {{event.price}} €
+                {% endif %}
+            </span>
             <p>
               <strong>{{event.name}}</strong><br>
               <em>at Grand Hotel Italia</em><br>
-              <span class="small">10:00 AM - 21:00 PM</span>
+              <span class="small">{{event.celebrate_data.time}}</span>
             </p>
           </div>
           {% endfor %}
