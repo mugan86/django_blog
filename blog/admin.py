@@ -1,13 +1,6 @@
 # -*- encoding: utf-8 -*-
 from django.contrib import admin
-from .models import Post
-from .models import PostType
-from .models import Category
-from .models import Contact
-from .models import Project
-from .models import Friend
-from .models import FriendType
-from .models import Event
+from .models import Post, PostType, Category, Contact, Project, Friend, FriendType, Event, EventType
 
 
 class PostAdmin(admin.ModelAdmin):
@@ -43,6 +36,9 @@ class FriendTypeAdmin(admin.ModelAdmin):
 class EventAdmin(admin.ModelAdmin):
     list_display = ('name', 'description', 'url', 'logotype' ,'celebrate_data')
 
+class EventTypeAdmin(admin.ModelAdmin):
+    list_display = ('name', 'description', 'category', 'free' ,'published_date')
+
 admin.site.register(Post, PostAdmin)
 admin.site.register(PostType, PostTypeAdmin)
 admin.site.register(Category, CategoryAdmin)
@@ -51,3 +47,4 @@ admin.site.register(Project, ProjectAdmin)
 admin.site.register(Friend, FriendAdmin)
 admin.site.register(FriendType, FriendTypeAdmin)
 admin.site.register(Event, EventAdmin)
+admin.site.register(EventType, EventTypeAdmin)
