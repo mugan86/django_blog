@@ -153,7 +153,7 @@
               <br/>
               <span class="small">{{event.celebrate_data}}</span>
             </p>
-            {% if user.is_authenticated %}
+            {% if user.is_authenticated and user.get_username == "anartzmugika"%}
                 <a class="btn btn-default" href="{% url "event_edit" pk=event.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
             {% endif %}
           </div>
