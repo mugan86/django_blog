@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 from django import forms
-from .models import Post
-from .models import Contact
+from .models import Post, Contact, Event
 
 class PostForm(forms.ModelForm):
 
@@ -32,6 +31,14 @@ class PostForm(forms.ModelForm):
             raise forms.ValidationError("La descripción debe contener más de 10 carácteres")
 
         return description
+
+class EventForm(forms.ModelForm):
+
+    class Meta:
+        model = Event
+        # Fields to show in form
+        fields = ('name', 'description', 'url', 'type', 'logotype','price' , 'location', 'celebrate_data')
+
 
 class ContactForm(forms.ModelForm):
 
