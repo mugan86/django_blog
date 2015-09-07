@@ -160,4 +160,17 @@ class Event(models.Model):
     def __unicode__(self):
         return u'%s' % self.name
 
+class EventType(models.Model):
+    name = models.CharField(primary_key=True, max_length=100)
+    description = models.CharField(max_length=150)
+    category = models.ForeignKey('Category')
+    free = models.BooleanField(default=True)
+    published_date = models.DateTimeField("Fecha publicación", default = timezone.now)
+
+    def publish(self):
+        self.published_date = timezone.now()
+        self.save()
+
+    def __unicode__(self):
+        return u'%s' % self.name
 
