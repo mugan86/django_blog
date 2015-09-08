@@ -120,6 +120,9 @@ def contact_new(request):
 
     return render(request, 'blog/post_edit.html', {'form': form, 'title': title, 'post_categorys': get_post_categories(), 'events': get_next_events()})
 
+def projects(request):
+    return render(request, 'blog/projects.html', {'post_categorys': get_post_categories(), 'events': get_next_events()})
+
 def about(request):
     return render(request, 'blog/about.html', {'post_categorys': get_post_categories(), 'events': get_next_events()})
 
