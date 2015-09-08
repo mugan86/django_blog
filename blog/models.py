@@ -95,6 +95,7 @@ class Project(models.Model):
     """
     id = models.AutoField(primary_key=True)
     name = models.CharField('Nombre', max_length=150)
+    intro = models.CharField('Introducción', max_length=200)
     description = RichTextField('Descripción')
     category = models.ForeignKey('Category')
     source = models.CharField('Fuente', max_length=250)
