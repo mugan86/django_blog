@@ -10,6 +10,7 @@ urlpatterns = [
     url(r'^post/(?P<pk>[0-9]+)/edit/$', views.post_edit, name='post_edit'),
     url(r'^event/(?P<pk>[0-9]+)/edit/$', views.event_edit, name='event_edit'),
     url(r'^about', views.about),
+    url(r'^projects', views.projects),
     url(r'^contact/', views.contact_new, name='contact_new'),
     url(r'^accounts/login/', views.login_form, name='login_form'),
     url(r'^accounts/logout/', views.logout_account, name='logout_form'),
