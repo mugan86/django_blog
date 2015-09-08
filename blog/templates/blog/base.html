@@ -145,13 +145,13 @@
             <span class="label label-primary">{{event.type}}</span>
             <span class="label label-danger">
                 {% if event.price == 0 %}
-                    FREE
+                    GRATIS
                 {% else %}
                     {{event.price}} €
                 {% endif %}
             </span>
             <p>
-              <strong><a href="">{{event.name}}</a></strong><br>
+              <strong><a href="{{event.url}}">{{event.name}}</a></strong><br>
               <em>
                  <i class="fa fa-map-marker"></i>
                 <a href="http://www.google.com/maps/place/{{event.location.latitude}},{{event.location.longitude}}/@{{event.location.latitude}},{{event.location.longitude}},14z">
