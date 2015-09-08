@@ -13,5 +13,4 @@ urlpatterns = [
     url(r'^contact/', views.contact_new, name='contact_new'),
     url(r'^accounts/login/', views.login_form, name='login_form'),
     url(r'^accounts/logout/', views.logout_account, name='logout_form'),
-
 ]
