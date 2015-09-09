@@ -173,4 +173,5 @@ def get_next_events():
 
 
 def get_friends_links():
-    return Friend.objects.order_by('name')
+    return Friend.objects.filter(type='Runners').order_by('name')
+
