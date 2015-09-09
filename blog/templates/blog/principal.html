@@ -1,10 +1,20 @@
 {% extends "blog/base.html" %}
 
 {% block content %}
-    <h1>{{ main_post.title}}</h1>
+    <h2>{{ main_post.title}}</h1>
     <p>{{ main_post.text}}</p>
     <pre>&lt;p&gt;Sample text here...&lt;/p&gt;</pre>
 {% endblock content %}
+
+{% block friends %}
+    <h4>Amigos corredores</h4>
+    <ul>
+        {% for friend in friends %}
+            <li><a href="{{ friend.url }}">{{ friend.name }}</a></li>
+        {% endfor %}
+    </ul>
+
+{% endblock friends %}
 
 
 <!--{% url "blog.views.post_list_by_category" category=cat %}
