@@ -3,7 +3,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth import logout
 from django.utils import timezone
 from django.db.models import Count
-from .models import Post, Event
+from .models import Post, Event, Friend
 from .forms import PostForm, EventForm, ContactForm
 from collections import Counter
 from django.db.models import Q
@@ -14,7 +14,7 @@ def principal(request):
     main = Post.objects.raw('SELECT * FROM blog_post WHERE post_type_id="Inicio" AND active = 1 ORDER BY published_date DESC')
     for p in main:
         main_object.append(p)
-    return render(request, 'blog/principal.html', {'post_categorys': get_post_categories(), 'main_post': main_object[0], 'events': get_next_events()})
+    return render(request, 'blog/principal.html', {'post_categorys': get_post_categories(), 'main_post': main_object[0], 'events': get_next_events(), 'friends': get_friends_links()})
 
 def post_list(request):
     # Add "-" inside 'order by' element to change publish order
@@ -171,3 +171,6 @@ def get_next_events():
     ##Show next 3 events
     return Event.objects.filter(celebrate_data__gte=timezone.now()).order_by('celebrate_data')[:3]
 
+
+def get_friends_links():
+    return Friend.objects.order_by('name')
