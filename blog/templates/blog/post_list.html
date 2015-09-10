@@ -1,4 +1,8 @@
- {% extends "blog/base.html" %}
+{% extends "blog/base.html" %}
+
+{% block navigation %}
+    Est&aacute;s en: <a href="{% url "blog.views.principal" %}">Inicio</a> / Blog
+{% endblock navigation %}
 
  {% block content %}
     {% for post in posts %}
@@ -13,7 +17,7 @@
                 </h3>
             </a>
             {% if post.source != '' %}
-            <p> Source: <a href = "{{post.source}}">{{post.source_title}}</a></p>
+            <p> Source: <a href = "{{post.source}}" target="_blank">{{post.source_title}}</a></p>
             {% endif %}
             <p class="post-meta">Posted by <a href="#">{{ post.author }}</a> on {{ post.published_date }}</p>
         </div>
