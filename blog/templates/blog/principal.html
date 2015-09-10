@@ -1,5 +1,9 @@
 {% extends "blog/base.html" %}
 
+{% block navigation %}
+    Est&aacute;s en: Inicio
+{% endblock navigation %}
+
 {% block content %}
     <h2>{{ main_post.title}}</h1>
     <p>{{ main_post.text}}</p>
@@ -10,7 +14,7 @@
     <h4>Amigos corredores</h4>
     <ul>
         {% for friend in friends %}
-            <li><a href="{{ friend.url }}">{{ friend.name }}</a></li>
+            <li><a href="{{ friend.url }}" target="_blank">{{ friend.name }}</a></li>
         {% endfor %}
     </ul>
 
