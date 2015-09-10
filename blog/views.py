@@ -14,6 +14,12 @@ def principal(request):
     main = Post.objects.raw('SELECT * FROM blog_post WHERE post_type_id="Inicio" AND active = 1 ORDER BY published_date DESC')
     for p in main:
         main_object.append(p)
+
+
+    main_object[0].text = main_object[0].text.replace("[YOUTUBE=", "<div class=\"video-container\"><iframe width=\"100%\" src=\"https://www.youtube.com/embed/")
+
+    main_object[0].text = main_object[0].text.replace("][/YOUTUBE]", "\" frameborder=\"0\" allowfullscreen></iframe></div>")
+    print main_object[0].text
     return render(request, 'blog/principal.html', {'post_categorys': get_post_categories(), 'main_post': main_object[0], 'events': get_next_events(), 'friends': get_friends_links()})
 
 def post_list(request):
