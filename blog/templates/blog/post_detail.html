@@ -6,6 +6,10 @@
 
 {% endblock %}
 
+{% block navigation %}
+    Est&aacute;s en: <a href="{% url "blog.views.principal" %}">Inicio</a> / <a href="{% url "blog.views.post_list" %}">Blog</a> / {{post.title|slice:"0:15"|lower}} ...
+{% endblock navigation %}
+
 {% block content %}
     <div class="post">
         {% if post.published_date %}
