@@ -15,11 +15,8 @@ def principal(request):
     for p in main:
         main_object.append(p)
 
+    main_object[0].text = get_youtube_player_in_article(main_object[0].text)
 
-    main_object[0].text = main_object[0].text.replace("[YOUTUBE=", "<div class=\"video-container\"><iframe width=\"100%\" src=\"https://www.youtube.com/embed/")
-
-    main_object[0].text = main_object[0].text.replace("][/YOUTUBE]", "\" frameborder=\"0\" allowfullscreen></iframe></div>")
-    print main_object[0].text
     return render(request, 'blog/principal.html', {'post_categorys': get_post_categories(), 'main_post': main_object[0], 'events': get_next_events(), 'friends': get_friends_links()})
 
 def post_list(request):
@@ -172,6 +169,15 @@ def get_post_categories():
         post_categorys.append(category_object)
 
     return post_categorys
+
+###Get Youtube Player code from send text
+def get_youtube_player_in_article(article_text):
+    article_text = article_text.replace("[YOUTUBE=", "<div class=\"video-container\"><iframe width=\"100%\" src=\"https://www.youtube.com/embed/")
+
+    article_text = article_text.replace("][/YOUTUBE]", "\" frameborder=\"0\" allowfullscreen></iframe></div>")
+    #print main_object[0].text
+
+    return article_text
 
 def get_next_events():
     ##Show next 3 events
