@@ -165,6 +165,12 @@ Use item.0 instead of item[0]
 {{ item.0 }}
 ```
 
+#Django custom admin actions:
+
+```sh
+https://godjango.com/78-custom-django-admin-actions/
+```
+
 #Permission problems (is not writable user local bin)
 
 http://stackoverflow.com/questions/26647412/homebrew-could-not-symlink-usr-local-bin-is-not-writable
