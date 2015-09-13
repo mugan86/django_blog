@@ -2,6 +2,12 @@
 from django.contrib import admin
 from .models import Post, PostType, Category, Contact, Project, Friend, FriendType, Event, EventType, Location
 
+#Task custom definitions
+def finish_tasks(self, request, queryset):
+    queryset.update(finish = True)
+    #finish_tasks.short_description = u'Marcar como finalizado' 
+def unfinished_tasks(self, request, queryset):
+    queryset.update(finish = False)
 
 class PostAdmin(admin.ModelAdmin):
     list_display = ('author', 'title', 'description', 'text', 'active' , 'category1', 'category2', 'published_date', )
@@ -23,6 +29,9 @@ class ContactAdmin(admin.ModelAdmin):
 
 class ProjectAdmin(admin.ModelAdmin):
     list_display = ('name', 'description', 'category', 'start_project_date', 'active', 'finish', 'published_date')
+    actions = [finish_tasks, unfinished_tasks]
+    finish_tasks.short_description = u'Marcar como finalizado'
+    unfinished_tasks.short_description = u'Marcar como no finalizado'
 
 class FriendAdmin(admin.ModelAdmin):
     list_display = ('name', 'description', 'category', 'img', 'url', 'active', 'type')
