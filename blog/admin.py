@@ -5,13 +5,13 @@ from .models import Post, PostType, Category, Contact, Project, Friend, FriendTy
 #Task custom definitions
 def finish_project(self, request, queryset):
     queryset.update(finish = True)
-    #finish_tasks.short_description = u'Marcar como finalizado' 
+    #finish_tasks.short_description = u'Marcar como finalizado'
 def unfinished_tasks(self, request, queryset):
     queryset.update(finish = False)
 
 def publish_action(self, request, queryset):
     queryset.update(active = True)
-    #finish_tasks.short_description = u'Marcar como finalizado' 
+    #finish_tasks.short_description = u'Marcar como finalizado'
 def unpublish_action(self, request, queryset):
     queryset.update(active = False)
 
@@ -29,6 +29,9 @@ class PostTypeAdmin(admin.ModelAdmin):
     list_filter = ('name', 'published_date', 'active')
     ordering = ('-published_date',)
     search_fields = ('description',)
+    actions = [publish_action, unpublish_action]
+    publish_action.short_description = u'Publicar seleccionado'
+    unpublish_action.short_description = u'Despublicar seleccionado'
 
 class CategoryAdmin(admin.ModelAdmin):
     list_display = ('title', 'description', 'created_date','published_date',)
@@ -44,12 +47,18 @@ class ProjectAdmin(admin.ModelAdmin):
 
 class FriendAdmin(admin.ModelAdmin):
     list_display = ('name', 'description', 'category', 'img', 'url', 'active', 'type')
-    list_filter = ('name', 'add_data', 'active')
+    list_filter = ('name', 'add_data', 'active', 'type')
     ordering = ('-id',)
     search_fields = ('name',)
+    actions = [publish_action, unpublish_action]
+    publish_action.short_description = u'Publicar seleccionado'
+    unpublish_action.short_description = u'Despublicar seleccionado'
 
 class FriendTypeAdmin(admin.ModelAdmin):
     list_display = ('name', 'description', 'active', 'add_data')
+    actions = [publish_action, unpublish_action]
+    publish_action.short_description = u'Publicar seleccionado'
+    unpublish_action.short_description = u'Despublicar seleccionado'
 
 class EventAdmin(admin.ModelAdmin):
     list_display = ('name', 'description', 'type', 'url', 'logotype' ,'celebrate_data')
