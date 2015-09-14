@@ -10,6 +10,8 @@ from django.db.models import Q
 #Generate PDF files
 from reportlab.pdfgen import canvas
 from reportlab.lib.units import inch
+#reportlab colors import
+from reportlab.lib.colors import pink, black, red, blue, green
 from django.http import HttpResponse
 from io import BytesIO
 
@@ -21,7 +23,7 @@ def create_pdf(request):
     buffer = BytesIO()
 
     # Create the PDF object, using the BytesIO object as its "file."
-    p = canvas.Canvas(buffer)
+    """p = canvas.Canvas(buffer)
 
     # Draw things on the PDF. Here's where the PDF generation happens.
     # See the ReportLab documentation for the full list of functionality.
@@ -52,10 +54,26 @@ def create_pdf(request):
 
     # Close the PDF object cleanly.
     #Create one page
-    p.showPage()
+    p.showPage()"""
+
+    #Reference: https://www.reportlab.com/docs/reportlab-userguide.pdf (Page 16)
+
+    c = canvas.Canvas(buffer)
+    c.setStrokeColor(pink)
+    c.grid([inch, 2*inch, 3*inch, 4*inch], [0.5*inch, inch, 1.5*inch, 2*inch, 2.5*inch])
+    c.setStrokeColor(black)
+    c.setFont("Times-Roman", 20)
+    c.drawString(500,2.5*inch, "(0,0) the Origin")
+    c.drawString(2.5*inch, inch, "(2.5,1) in inches")
+    c.drawString(4*inch, 6*inch, "(4, 2.5)")
+    c.setFillColor(red)
+    c.rect(0,2*inch,0.2*inch,0.3*inch, fill=1)
+    c.setFillColor(green)
+    c.circle(4.5*inch, 0.4*inch, 0.2*inch, fill=1)
 
     #If want create new page add new "p.showPage()"
-    p.save()
+    c.showPage()
+    c.save()
 
     # Get the value of the BytesIO buffer and write it to the response.
     pdf = buffer.getvalue()
