@@ -62,6 +62,14 @@ Install/Create Connection MySQL in Python:
 (python2.7) $ sudo pip install mysql-python
 ```
 
+Install PDF Generator (Reportlab):
+
+https://docs.djangoproject.com/en/1.8/howto/outputting-pdf/
+
+```sh
+
+```
+
 Source: http://omaryahir.blogspot.com.es/2014/01/instalar-django-mysql-osx-guia-rapida-5.html
 
 ###Create database in localhost.
