@@ -10,6 +10,7 @@ from django.db.models import Q
 #Generate PDF files
 from reportlab.pdfgen import canvas
 from reportlab.lib.units import inch
+from reportlab.lib.pagesizes import letter
 #reportlab colors import
 from reportlab.lib.colors import pink, black, red, blue, green
 from reportlab.lib.pagesizes import A4
@@ -19,43 +20,13 @@ from io import BytesIO
 def create_pdf(request):
     # Create the HttpResponse object with the appropriate PDF headers.
     response = HttpResponse(content_type='application/pdf')
-    response['Content-Disposition'] = 'attachment; filename="pdf_doc.pdf"'
+    filename_attachment = 'attachment; filename="pdf_%s.pdf"' % (timezone.now())
+    print filename_attachment
+    response['Content-Disposition'] = filename_attachment
 
     buffer = BytesIO()
 
     # Create the PDF object, using the BytesIO object as its "file."
-    """p = canvas.Canvas(buffer)
-
-    # Draw things on the PDF. Here's where the PDF generation happens.
-    # See the ReportLab documentation for the full list of functionality.
-    p.drawString(100, 100, "Anartz Mugika Blog.")
-
-    # define a large font
-    p.setFont("Helvetica", 14)
-
-    p.setStrokeColorRGB(0.2,0.5,0.3)
-    p.setFillColorRGB(1,0,1)
-    # draw some lines
-    p.line(0,0,0,1.7*inch)
-    p.line(0,0,1*inch,0)
-    # draw a rectangle
-    p.rect(0.2*inch,0.2*inch,1*inch,1.5*inch, fill=1)
-    # make text go straight up
-    p.rotate(90)
-    # change color
-    p.setFillColorRGB(0,0,0.77)
-    # say hello (note after rotate the y coord needs to be negative!)
-    p.drawString(0.3*inch, -inch, "Hello World")
-
-    #Create one page
-    #p.showPage()
-
-    #horizontally from left side , vertically from down side
-    p.drawString(300, 600, "Anartz Mugika Blog.")
-
-    # Close the PDF object cleanly.
-    #Create one page
-    p.showPage()"""
 
     #Reference: https://www.reportlab.com/docs/reportlab-userguide.pdf (Page 16)
 
@@ -73,6 +44,24 @@ def create_pdf(request):
     c.circle(4.5*inch, 0.4*inch, 0.2*inch, fill=1)
 
     #If want create new page add new "p.showPage()"
+    c.showPage()
+
+    c.setLineWidth(.3)
+    c.setFont('Helvetica', 12)
+
+    c.drawString(30,750,'OFFICIAL COMMUNIQUE')
+    c.drawString(30,735,'OF ACME INDUSTRIES')
+    c.drawString(500,750,"12/12/2010")
+    c.line(480,747,580,747)
+
+    c.drawString(275,725,'AMOUNT OWED:')
+    c.drawString(500,725,"$1,000.00")
+    c.line(378,723,580,723)
+
+    c.drawString(30,703,'RECEIVED BY:')
+    c.line(120,700,580,700)
+    c.drawString(120,703,"JOHN DOE")
+
     c.showPage()
     c.save()
 
