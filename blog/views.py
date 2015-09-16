@@ -3,7 +3,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth import logout
 from django.utils import timezone
 from django.db.models import Count
-from .models import Post, Event, Friend
+from .models import Post, Event, Friend, Project
 from .forms import PostForm, EventForm, ContactForm
 from collections import Counter
 from django.db.models import Q
@@ -12,6 +12,7 @@ from reportlab.pdfgen import canvas
 from reportlab.lib.units import inch
 #reportlab colors import
 from reportlab.lib.colors import pink, black, red, blue, green
+from reportlab.lib.pagesizes import A4
 from django.http import HttpResponse
 from io import BytesIO
 
@@ -58,7 +59,7 @@ def create_pdf(request):
 
     #Reference: https://www.reportlab.com/docs/reportlab-userguide.pdf (Page 16)
 
-    c = canvas.Canvas(buffer)
+    c = canvas.Canvas(buffer, pagesize = A4)
     c.setStrokeColor(pink)
     c.grid([inch, 2*inch, 3*inch, 4*inch], [0.5*inch, inch, 1.5*inch, 2*inch, 2.5*inch])
     c.setStrokeColor(black)
@@ -197,7 +198,11 @@ def contact_new(request):
     return render(request, 'blog/post_edit.html', {'form': form, 'title': title, 'post_categorys': get_post_categories(), 'events': get_next_events()})
 
 def projects(request):
-    return render(request, 'blog/projects.html', {'post_categorys': get_post_categories(), 'events': get_next_events()})
+    projects = Project.objects.filter(active=1).order_by('published_date')[:6]
+    for p in projects:
+        print p
+
+    return render(request, 'blog/projects.html', {'projects': projects, 'post_categorys': get_post_categories(), 'events': get_next_events()})
 
 def about(request):
     return render(request, 'blog/about.html', {'post_categorys': get_post_categories(), 'events': get_next_events()})
