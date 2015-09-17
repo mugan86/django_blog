@@ -10,7 +10,30 @@
     <h1>Projectos</h1>
       <p class="lead text-center">I am a creative graphic designer focused on modern eye catching designs. I am not only the graphic designer! I can also do complete websites &amp; computer applications.</p>
       <div class="container">
-        <div class="row stylish-panel">
+        {% for project in projects %}
+
+
+            {% if forloop.counter0|divisibleby:"3" %}
+            <!--<p><b>{{ forloop.counter0 }}</b></p>-->
+                <div class="row stylish-panel">
+            {% endif %}
+                     <div class="col-md-3">
+                        <div>
+                          <img src="{{ project.photo_url }}" alt="Texto Alternativo" class="img-circle img-thumbnail">
+                          <h2>{{ project.title }}</h2>
+                          <p>{{ project.intro}}</p>
+                          <a href="#" class="btn btn-primary" title="See more">See works »</a>
+                        </div>
+                      </div>
+            {% if forloop.counter == 6 or forloop.counter == 3 %}
+                </div>
+            {% endif %}
+
+
+        {% endfor %}
+
+
+        <!--<div class="row stylish-panel">
           <div class="col-md-3">
             <div>
               <img src="http://lorempixel.com/200/200/abstract/1/" alt="Texto Alternativo" class="img-circle img-thumbnail">
@@ -21,58 +44,6 @@
               <a href="#" class="btn btn-primary" title="See more">See works »</a>
             </div>
           </div>
-          <div class="col-md-3">
-            <div>
-              <img src="http://lorempixel.com/200/200/abstract/2/" alt="Texto Alternativo" class="img-circle img-thumbnail">
-              <h2>Photographer</h2>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                tempor incididunt ut labore et dolore magna aliqua.
-              </p>
-              <a href="#" class="btn btn-primary" title="See more">See works »</a>
-            </div>
-          </div>
-          <div class="col-md-3">
-            <div>
-              <img src="http://lorempixel.com/200/200/abstract/3/" alt="Texto Alternativo" class="img-circle img-thumbnail">
-              <h2>Copywriter</h2>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                tempor incididunt ut labore et dolore magna aliqua.
-              </p>
-              <a href="#" class="btn btn-primary" title="See more">See works »</a>
-            </div>
-          </div>
-        </div>
-        <div class="row stylish-panel">
-          <div class="col-md-3">
-            <div>
-              <img src="http://lorempixel.com/200/200/abstract/4/" alt="Texto Alternativo" class="img-circle img-thumbnail">
-              <h2>Webdesigner</h2>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                tempor incididunt ut labore et dolore magna aliqua.
-              </p>
-              <a href="#" class="btn btn-primary" title="See more">See works »</a>
-            </div>
-          </div>
-          <div class="col-md-3">
-            <div>
-              <img src="http://lorempixel.com/200/200/abstract/5/" alt="Texto Alternativo" class="img-circle img-thumbnail">
-              <h2>Photographer</h2>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                tempor incididunt ut labore et dolore magna aliqua.
-              </p>
-              <a href="#" class="btn btn-primary" title="See more">See works »</a>
-            </div>
-          </div>
-          <div class="col-md-3">
-            <div>
-              <img src="http://lorempixel.com/200/200/abstract/6/" alt="Texto Alternativo" class="img-circle img-thumbnail">
-              <h2>Copywriter</h2>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                tempor incididunt ut labore et dolore magna aliqua.
-              </p>
-              <a href="#" class="btn btn-primary" title="See more">See works »</a>
-            </div>
-          </div>
-        </div>
+          -->
       </div>
 {% endblock %}
