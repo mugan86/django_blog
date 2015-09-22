@@ -22,7 +22,7 @@
                           <img src="{{ project.photo_url }}" alt="Texto Alternativo" class="img-circle img-thumbnail">
                           <h2>{{ project.title }}</h2>
                           <p>{{ project.intro}}</p>
-                          <a href="#" class="btn btn-primary" title="See more">See works »</a>
+                          <a href="#" class="btn btn-primary" title="See more">Ver m&aacute;s »</a>
                         </div>
                       </div>
             {% if forloop.counter == 6 or forloop.counter == 3 %}
@@ -31,19 +31,5 @@
 
 
         {% endfor %}
-
-
-        <!--<div class="row stylish-panel">
-          <div class="col-md-3">
-            <div>
-              <img src="http://lorempixel.com/200/200/abstract/1/" alt="Texto Alternativo" class="img-circle img-thumbnail">
-              <h2>Webdesigner</h2>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                tempor incididunt ut labore et dolore magna aliqua.
-              </p>
-              <a href="#" class="btn btn-primary" title="See more">See works »</a>
-            </div>
-          </div>
-          -->
       </div>
 {% endblock %}

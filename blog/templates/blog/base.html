@@ -54,7 +54,7 @@
                       <li>
                         <a a href="/contact">Contacto</a>
                       </li>
-                      {% if user.is_authenticated %}
+                      {% if user.is_authenticated %} <!--Check if user is authenticated-->
                       <li>
                           <a href="{% url "blog.views.post_new" %}">Nueva entrada</a>
                       </li>
