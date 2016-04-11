@@ -21,7 +21,7 @@ def create_pdf(request):
     # Create the HttpResponse object with the appropriate PDF headers.
     response = HttpResponse(content_type='application/pdf')
     filename_attachment = 'attachment; filename="pdf_%s.pdf"' % (timezone.now())
-    print filename_attachment
+    print (filename_attachment)
     response['Content-Disposition'] = filename_attachment
 
     buffer = BytesIO()
@@ -189,7 +189,7 @@ def contact_new(request):
 def projects(request):
     projects = Project.objects.filter(active=1).order_by('published_date')[:6]
     for p in projects:
-        print p
+        print (p)
 
     return render(request, 'blog/projects.html', {'projects': projects, 'post_categorys': get_post_categories(), 'events': get_next_events()})
 
