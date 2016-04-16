@@ -77,6 +77,14 @@ https://docs.djangoproject.com/en/1.8/howto/outputting-pdf/
 pip install reportlab
 ```
 
+Install Django CKEditor (Django CKEditor):
+
+https://github.com/django-ckeditor/django-ckeditor
+
+```sh
+pip install django-ckeditor
+```
+
 ###Create database in localhost.
 
 Add Database configuration data in "youtube_api" directory:
