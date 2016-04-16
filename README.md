@@ -55,6 +55,12 @@ Disactive:
 (python2.7)$ deactivate
 ```
 
+In Windows:
+
+```sh
+http://stackoverflow.com/questions/8921188/issue-with-virtualenv-cannot-activate
+```
+
 Install/Create Connection MySQL in Python:
 
 ```sh
