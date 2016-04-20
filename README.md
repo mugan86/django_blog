@@ -12,7 +12,7 @@ Clone repository.
 Install Django last version
 
 ```sh
-pip install django==1.8
+pip install django==1.9
 ```
 
 # CKEditor Installation Guide & more info
