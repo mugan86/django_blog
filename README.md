@@ -105,11 +105,13 @@ DATABASES = {
 Sync model with db and make migration in app 'blog' to create and configure database all tables:
 
 ```sh
-python manage.py syncdb
+python manage.py migrate (in Django 1.9 change syncdb with "migrate")
 
 python manage.py makemigrations yourappname
 
 python manage.py migrate
+
+python manage.py createsuperuser (Create user to manage admin panel and content)
 
 ```
 
