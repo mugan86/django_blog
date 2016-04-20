@@ -55,6 +55,12 @@ Disactive:
 (python2.7)$ deactivate
 ```
 
+In Windows:
+
+```sh
+http://stackoverflow.com/questions/8921188/issue-with-virtualenv-cannot-activate
+```
+
 Install/Create Connection MySQL in Python:
 
 ```sh
@@ -69,6 +75,14 @@ https://docs.djangoproject.com/en/1.8/howto/outputting-pdf/
 
 ```sh
 pip install reportlab
+```
+
+Install Django CKEditor (Django CKEditor):
+
+https://github.com/django-ckeditor/django-ckeditor
+
+```sh
+pip install django-ckeditor
 ```
 
 ###Create database in localhost.
