@@ -31,6 +31,7 @@ def create_pdf(request):
     #Reference: https://www.reportlab.com/docs/reportlab-userguide.pdf (Page 16)
 
     c = canvas.Canvas(buffer, pagesize = A4)
+
     c.setStrokeColor(pink)
     c.grid([inch, 2*inch, 3*inch, 4*inch], [0.5*inch, inch, 1.5*inch, 2*inch, 2.5*inch])
     c.setStrokeColor(black)
