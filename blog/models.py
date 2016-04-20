@@ -33,7 +33,7 @@ class Post(models.Model):
         self.save()
         
     ## In python 2 to show in select options for example use 'def __unicode__' and in python 3 use 'def __str__'
-    def __str__ (self):
+    def __unicode__ (self):
         return u'%s' % self.title
 
 class PostType(models.Model):
@@ -52,7 +52,7 @@ class PostType(models.Model):
         self.save()
 
     ## In python 2 to show in select options for example use 'def __unicode__' and in python 3 use 'def __str__'
-    def __str__ (self):
+    def __unicode__ (self):
         return u'%s' % self.name
 
 class Category(models.Model):
@@ -71,7 +71,7 @@ class Category(models.Model):
         self.save()
 
     ## In python 2 to show in select options for example use 'def __unicode__' and in python 3 use 'def __str__'
-    def __str__(self):
+    def __unicode__ (self):
         return u'%s' % self.title
 
 class Contact(models.Model):
@@ -89,7 +89,7 @@ class Contact(models.Model):
         self.received_date = timezone.now()
         self.save()
 
-    def __str__ (self):
+    def __unicode__ (self):
         return u'%s' % self.name
 
 class Project(models.Model):
@@ -115,7 +115,7 @@ class Project(models.Model):
         self.published_date = timezone.now()
         self.save()
 
-    def __str__ (self):
+    def __unicode__ (self):
         return u'%s' % self.name
 
 class Friend(models.Model):
@@ -133,7 +133,7 @@ class Friend(models.Model):
         self.add_data = timezone.now()
         self.save()
 
-    def __str__ (self):
+    def __unicode__ (self):
         return u'%s' % self.name
 
 class FriendType(models.Model):
@@ -146,7 +146,7 @@ class FriendType(models.Model):
         self.add_data = timezone.now()
         self.save()
 
-    def __str__ (self):
+    def __unicode__ (self):
         return u'%s' % self.name
 
 class Event(models.Model):
@@ -165,7 +165,7 @@ class Event(models.Model):
         self.published_date = timezone.now()
         self.save()
 
-    def __str__ (self):
+    def __unicode__ (self):
         return u'%s' % self.name
 
 class EventType(models.Model):
@@ -179,7 +179,7 @@ class EventType(models.Model):
         self.published_date = timezone.now()
         self.save()
 
-    def __str__ (self):
+    def __unicode__ (self):
         return u'%s' % self.name
 
 class Location(models.Model):
@@ -197,6 +197,6 @@ class Location(models.Model):
         self.published_date = timezone.now()
         self.save()
 
-    def __str__ (self):
+    def __unicode__ (self):
         return u'%s' % self.name
 
