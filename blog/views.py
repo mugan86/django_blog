@@ -60,7 +60,7 @@ def create_pdf(request):
 
     c.drawString(30,703,'RECEIVED BY:')
     c.line(120,700,580,700)
-    c.drawString(120,703,"JOHN DOE")
+    c.drawString(120,703,"Anartz Muxika Ledo")
 
     c.showPage()
     c.save()
