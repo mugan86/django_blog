@@ -72,6 +72,7 @@ class EventAdmin(admin.ModelAdmin):
 
 class EventTypeAdmin(admin.ModelAdmin):
     list_display = ('name', 'description', 'category', 'free' ,'published_date')
+    list_filter = ('category', 'free')
 
 class LocationAdmin(admin.ModelAdmin):
     list_display = ('name', 'province', 'region', 'longitude' ,'latitude', 'published_date')
