@@ -74,7 +74,8 @@ class EventTypeAdmin(admin.ModelAdmin):
     list_display = ('name', 'description', 'category', 'free' ,'published_date')
 
 class LocationAdmin(admin.ModelAdmin):
-    list_display = ('name', 'province', 'region', 'longitude' ,'latitude')
+    list_display = ('name', 'province', 'region', 'longitude' ,'latitude', 'published_date')
+    list_filter = ('province', 'region')
 
 admin.site.register(Post, PostAdmin)
 admin.site.register(PostType, PostTypeAdmin)
