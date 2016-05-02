@@ -16,6 +16,8 @@ from reportlab.lib.colors import pink, black, red, blue, green
 from reportlab.lib.pagesizes import A4
 from django.http import HttpResponse
 from io import BytesIO
+from polls.models import Question, Choice
+
 
 def create_pdf(request):
     # Create the HttpResponse object with the appropriate PDF headers.
@@ -81,7 +83,9 @@ def principal(request):
 
     main_object[0].text = get_youtube_player_in_article(main_object[0].text)
 
-    return render(request, 'blog/principal.html', {'post_categorys': get_post_categories(), 'main_post': main_object[0], 'events': get_next_events(), 'friends': get_friends_links()})
+    question = Question.objects.get(id=1)
+
+    return render(request, 'blog/principal.html', {'post_categorys': get_post_categories(), 'main_post': main_object[0], 'events': get_next_events(), 'friends': get_friends_links(), 'question': question})
 
 def post_list(request):
     # Add "-" inside 'order by' element to change publish order
