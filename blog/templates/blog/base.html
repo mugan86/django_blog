@@ -141,11 +141,12 @@
                         {% block friends%}
 
                         {%  endblock %}
-
             </div><!--/.col-xs-12 -->
         </div><!--/.row -->
         <div class="row">
+          {% if events.count > 0 %}
             <h3>Próximos eventos</h3><br/>
+          {% endif %}
           {% for event in events %}
           <div class="col-sm-4">
             <!--event in class-->
@@ -178,6 +179,21 @@
             {% endif %}
           </div>
           {% endfor %}
+        </div>
+        <div class="row">
+          <h4>Encuesta</h4>
+                        <h1>{{ question.question_text }}</h1>
+
+                        {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+                        <form action="{% url 'polls:vote' question.id %}" method="post">
+                        {% csrf_token %}
+                        {% for choice in question.choice_set.all %}
+                            <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}" />
+                            <label for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label><br />
+                        {% endfor %}
+                        <input type="submit" value="Vote" />
+                        </form>
         </div>
     </div><!--/.container -->
     <!-- Footer -->
