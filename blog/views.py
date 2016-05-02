@@ -83,7 +83,7 @@ def principal(request):
 
     main_object[0].text = get_youtube_player_in_article(main_object[0].text)
 
-    question = Question.objects.get(id=1)
+    question = Question.objects.get(id=3)
 
     return render(request, 'blog/principal.html', {'post_categorys': get_post_categories(), 'main_post': main_object[0], 'events': get_next_events(), 'friends': get_friends_links(), 'question': question})
 
