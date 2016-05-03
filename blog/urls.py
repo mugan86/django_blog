@@ -9,6 +9,7 @@ urlpatterns = [
     url(r'^post/category/(?P<category>[a-zA-Z]+)/$', views.post_list_by_category), ##To test...
     url(r'^post/new/$', views.post_new, name='post_new'),
     url(r'^post/(?P<pk>[0-9]+)/edit/$', views.post_edit, name='post_edit'),
+    url(r'^post/json/$', views.get_posts, name='get_posts'),
     url(r'^event/(?P<pk>[0-9]+)/edit/$', views.event_edit, name='event_edit'),
     url(r'^about', views.about),
     url(r'^projects', views.projects),
