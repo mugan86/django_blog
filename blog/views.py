@@ -17,8 +17,13 @@ from reportlab.lib.pagesizes import A4
 from django.http import HttpResponse
 from io import BytesIO
 from polls.models import Question, Choice
+#serializer objects
+from django.core import serializers
 
-
+#Return all post objects in json format
+def get_posts(request):
+    data = serializers.serialize('json', Post.objects.all(), fields=('author','title', 'description', 'text', 'source'))
+    return HttpResponse(data, content_type='application/json')
 def create_pdf(request):
     # Create the HttpResponse object with the appropriate PDF headers.
     response = HttpResponse(content_type='application/pdf')
@@ -83,7 +88,7 @@ def principal(request):
 
     main_object[0].text = get_youtube_player_in_article(main_object[0].text)
 
-    question = Question.objects.get(id=3)
+    question = Question.objects.get(id=4)
 
     return render(request, 'blog/principal.html', {'post_categorys': get_post_categories(), 'main_post': main_object[0], 'events': get_next_events(), 'friends': get_friends_links(), 'question': question})
 
