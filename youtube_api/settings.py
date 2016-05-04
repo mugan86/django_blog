@@ -40,6 +40,7 @@ INSTALLED_APPS = (
     'blog',
     'ckeditor',
     'polls',
+    'servirace',
 )
 
 MIDDLEWARE_CLASSES = (
