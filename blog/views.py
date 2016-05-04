@@ -24,6 +24,7 @@ from django.core import serializers
 def get_posts(request):
     data = serializers.serialize('json', Post.objects.all(), fields=('author','title', 'description', 'text', 'source'))
     return HttpResponse(data, content_type='application/json')
+    
 def create_pdf(request):
     # Create the HttpResponse object with the appropriate PDF headers.
     response = HttpResponse(content_type='application/pdf')
