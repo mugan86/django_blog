@@ -13,6 +13,8 @@ class ChoiceInline(admin.TabularInline):
 
 class HerriaAdmin(admin.ModelAdmin):
     list_display = ('izena', 'longitudea', 'latitudea')
+    list_filter = ('izena', 'probintzia')
+    search_fields = ('izena','probintzia')
     """fieldsets = [
         (None,               {'fields': ['question_text']}),
         ('Date information', {'fields': ['pub_date'], 'classes': ['collapse']}),
