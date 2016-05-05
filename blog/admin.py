@@ -23,7 +23,7 @@ def unpublish_action(self, request, queryset):
     queryset.update(active = False)
 
 class PostAdmin(admin.ModelAdmin):
-    list_display = ('author', 'title', 'description', 'text', 'active' , 'category1', 'category2', 'published_date', )
+    list_display = ('id', 'author', 'title', 'description', 'text', 'active' , 'category1', 'category2', 'published_date', )
     list_filter = ('author', 'published_date')
     ordering = ('-published_date',)
     search_fields = ('title',)

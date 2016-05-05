@@ -20,10 +20,14 @@ from polls.models import Question, Choice
 #serializer objects
 from django.core import serializers
 
+
 #Return all post objects in json format
 def get_posts(request):
     data = serializers.serialize('json', Post.objects.all(), fields=('author','title', 'description', 'text', 'source'))
-    return HttpResponse(data, content_type='application/json')
+    new_data = []
+    for item in data:
+        new_data.append(item[0])
+    return HttpResponse(new_data, content_type='application/json')
     
 def create_pdf(request):
     # Create the HttpResponse object with the appropriate PDF headers.
@@ -83,15 +87,15 @@ def create_pdf(request):
 def principal(request):
 
     main_object = [];
-    main = Post.objects.raw('SELECT * FROM blog_post WHERE post_type_id="Inicio" AND active = 1 ORDER BY published_date DESC')
+    main = Post.objects.raw('SELECT * FROM blog_post WHERE  active = 1 ORDER BY published_date DESC')
     for p in main:
         main_object.append(p)
 
     main_object[0].text = get_youtube_player_in_article(main_object[0].text)
 
-    question = Question.objects.get(id=4)
+    """question = Question.objects.get(id=4) 'question': question"""
 
-    return render(request, 'blog/principal.html', {'post_categorys': get_post_categories(), 'main_post': main_object[0], 'events': get_next_events(), 'friends': get_friends_links(), 'question': question})
+    return render(request, 'blog/principal.html', {'post_categorys': get_post_categories(), 'main_post': main_object[0], 'events': get_next_events(), 'friends': get_friends_links()})
 
 def post_list(request):
     # Add "-" inside 'order by' element to change publish order
@@ -219,6 +223,7 @@ def logout_account(request):
 ##Get Post category appears count to show in right column space
 def get_post_categories():
     post_categorys = []
+    
 
     #create method to short code...
 
@@ -226,10 +231,10 @@ def get_post_categories():
     category_2 = Post.objects.raw('SELECT id, category2_id FROM blog_post WHERE active=1 AND post_type_id <> "Inicio"')
 
     for p in category_1:
-        post_categorys.append("%s" % (p.category1_id))
-
+        post_categorys.append("%s" % (p.title))
+        
     for p in category_2:
-        post_categorys.append("%s" % (p.category2_id))
+        post_categorys.append("%s" % (p.title))
 
     #Extract list values and appears count
     c = Counter(post_categorys)

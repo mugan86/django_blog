@@ -117,7 +117,7 @@
                         <h4>Categorias</h4>
                         <ul>
                             {% for cat in post_categorys %}
-                                <li><a href="/post/category/{{ cat.0 }}">{{ cat.1 }}</a></li>
+                                <li><a href="/post/category/{{ cat.2 }}">{{ cat.1 }}</a></li>
                             {% endfor %}
                         </ul>
                         <!--<h4>Pr&oacute;ximos eventos</h4>
@@ -180,21 +180,7 @@
           </div>
           {% endfor %}
         </div>
-        <div class="row">
-          <h4>Encuesta</h4>
-                        <h1>{{ question.question_text }}</h1>
-
-                        {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
-
-                        <form action="{% url 'polls:vote' question.id %}" method="post">
-                        {% csrf_token %}
-                        {% for choice in question.choice_set.all %}
-                            <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}" />
-                            <label for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label><br />
-                        {% endfor %}
-                        <input type="submit" value="Vote" />
-                        </form>
-        </div>
+        
     </div><!--/.container -->
     <!-- Footer -->
     <footer>
