@@ -12,6 +12,7 @@ class Post(models.Model):
     """
     Post propert
     """
+    id = models.AutoField(primary_key=True)
     author = models.ForeignKey('auth.User')
     title = models.CharField('Título', max_length=200)
     description = models.CharField('Descripción', max_length=200)
@@ -59,7 +60,8 @@ class Category(models.Model):
     """
     Category propert
     """
-    title = models.CharField('Título', max_length=200, primary_key=True)
+    id=models.AutoField(primary_key=True)
+    title = models.CharField('Título', max_length=200)
     description = models.TextField("Descripción")
     created_date = models.DateTimeField('Fecha de creación',
                 default=timezone.now)
