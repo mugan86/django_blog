@@ -43,7 +43,7 @@ class Lasterketa(models.Model):
     desnibela = models.CharField('Climb', max_length=5);
     longitudea = models.CharField('Longitude', max_length=15)
     latitudea = models.CharField('Latitude', max_length=15)
-    route = models.CharField('Route ID', max_length=20);
+    route = models.CharField('Route ID', max_length=20, blank=True);
     route_source = models.CharField('Route Source', max_length=30);
     noiz = models.DateField("Data", default = timezone.now)
     start_time = models.TimeField("Start Time", default = timezone.now)
@@ -53,11 +53,24 @@ class Lasterketa(models.Model):
     herri_kodea = models.ForeignKey('Herria', related_name='town')
     gehitua = models.DateTimeField('Add Data', default=timezone.now)
     circle_circuit = models.BooleanField('Circle circuit?', default=True)
-    finish_herri_kodea = models.ForeignKey('Herria', related_name='town_finish');
-    finish_longitudea = models.CharField('Finish Longitude', max_length=15)
-    finish_latitudea = models.CharField('Finish Latitude', max_length=15)
-    short_url = models.CharField('Short URL', max_length=100)
+    finish_herri_kodea = models.ForeignKey('Herria', related_name='town_finish', blank=True);
+    finish_longitudea = models.CharField('Finish Longitude', max_length=15, blank=True)
+    finish_latitudea = models.CharField('Finish Latitude', max_length=15, blank=True)
+    short_url = models.CharField('Short URL', max_length=100, blank=True)
     organizator = models.ForeignKey('Organizator')
 
     def __unicode__(self):
         return u'%s' % self.izena
+
+class Category(models.Model):
+    categoryzer_kodea = models.CharField('Code', primary_key=True, max_length=69)
+    cat_basque = models.CharField('Category (Basque)', max_length=50)
+    cat_spanish = models.CharField('Category (Spanish)', max_length=50)
+    cat_english = models.CharField('Category (English)', max_length=50)
+    image_url = models.CharField('Image Url', max_length=150, blank=True)
+    cat_ca = models.CharField('Category (Catala)', max_length=50)
+
+"""class Zerbitzua(models.Model):
+    zer_kodea = models.CharField('Code', primary_key=True, max_length=69)
+    name = models.TextField('Name')
+    categoryzer_kodea = models.ForeignKey('Category')"""
