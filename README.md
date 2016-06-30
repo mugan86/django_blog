@@ -115,6 +115,12 @@ python manage.py createsuperuser (Create user to manage admin panel and content)
 
 ```
 
+Before execute, collect statics files:
+
+```sh
+python manage.py collecstatic
+```
+
 Execute:
 ```sh
 python manage.py runserver
