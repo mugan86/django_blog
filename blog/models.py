@@ -39,8 +39,8 @@ class Post(models.Model):
 
 class PostType(models.Model):
     """Manage post type data to classified in different types (blog, videos, articles,...)"""
-
-    name = models.CharField('Nombre', max_length=100, primary_key=True)
+    id = models.AutoField(primary_key=True)
+    name = models.CharField('Nombre', max_length=100)
     description = RichTextField('Descripción')
     active = models.BooleanField('¿Activo?', default=False)
     created_date = models.DateTimeField('Fecha de creación',
@@ -139,7 +139,8 @@ class Friend(models.Model):
         return u'%s' % self.name
 
 class FriendType(models.Model):
-    name = models.CharField(max_length=100, primary_key=True)
+    id = models.AutoField(primary_key=True)
+    name = models.CharField(max_length=100)
     description = models.CharField(max_length=200)
     active = models.BooleanField(default=True)
     add_data = models.DateTimeField(default=timezone.now)
@@ -171,7 +172,8 @@ class Event(models.Model):
         return u'%s' % self.name
 
 class EventType(models.Model):
-    name = models.CharField(primary_key=True, max_length=100)
+    id = models.AutoField(primary_key=True)
+    name = models.CharField(max_length=100)
     description = models.CharField(max_length=150)
     category = models.ForeignKey('Category')
     free = models.BooleanField(default=True)
