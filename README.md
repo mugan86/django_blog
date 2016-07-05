@@ -224,7 +224,7 @@ Add the url to access the Django admin site documentation app. If you open the p
 
 Next, open the project's settings.py file and go to the INSTALLED_APPS variable. Near the final values in this variable add the line django.contrib.admindocs to enable the Django admin site documentation app.
 
-With the development web server running. Open a browser on the address http://127.0.0.1:8000/admin/doc/ and you should see a page like the one if figure 3.``
+With the development web server running. Open a browser on the address http://127.0.0.1:8000/admin/doc/ and you should see a page like the one if figure 3.```
 
 ##Install HTML to PDF / Pisa
 
