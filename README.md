@@ -226,5 +226,24 @@ Next, open the project's settings.py file and go to the INSTALLED_APPS variable.
 
 With the development web server running. Open a browser on the address http://127.0.0.1:8000/admin/doc/ and you should see a page like the one if figure 3.``
 
+##Install HTML to PDF / Pisa
+
+To install command:
+```sh
+sudo pip install xhtml2pdf
+```
+
+Import in views.py:
+
+```sh
+from xhtml2pdf import pisa 
+ import cStringIO as StringIO 
+ from django.template.loader import get_template 
+ from django.template import Context 
+ ```
+
+More Info:
+
+https://micropyramid.com/blog/generating-pdf-files-in-python-using-xhtml2pdf/
 
 
