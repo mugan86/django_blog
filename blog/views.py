@@ -20,6 +20,12 @@ from polls.models import Question, Choice
 #serializer objects
 from django.core import serializers
 
+#pisa
+from xhtml2pdf import pisa
+import cStringIO as StringIO
+from django.template.loader import get_template 
+from django.template import Context 
+
 
 #Return all post objects in json format
 def get_posts(request):
@@ -28,6 +34,16 @@ def get_posts(request):
     for item in data:
         new_data.append(item[0])
     return HttpResponse(new_data, content_type='application/json')
+
+def create_pdf_with_pisa(request):
+    template = get_template("pisa_hello.html") 
+    context = Context({'pagesize':'A4'}) 
+    html = template.render(context) 
+    result = StringIO.StringIO() 
+    pdf = pisa.pisaDocument(StringIO.StringIO(html), dest=result) 
+    if not pdf.err: 
+        return HttpResponse(result.getvalue(), content_type='application/pdf') 
+    else: return HttpResponse('Errors') 
     
 def create_pdf(request):
     # Create the HttpResponse object with the appropriate PDF headers.
