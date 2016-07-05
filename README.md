@@ -209,7 +209,14 @@ http://stackoverflow.com/questions/11481499/django-iterate-number-in-for-loop-of
 
 #Configure and install the Django admin site docs app
 
-```shThe Django admin site also has its own documentation app. The Django admin site documentation app not only provides information about the operation of the admin site itself, but also includes other general documentation about Django filters for Django templates. More importantly, the Django admin site documentation app introspects the source code for all installed project apps to present documentation on controller methods and model objects (i.e. documentation embedded in the source code of app models.py and views.py files).
+To install pip to use:
+
+```sh
+pip install docutils
+```
+More info:
+```sh
+The Django admin site also has its own documentation app. The Django admin site documentation app not only provides information about the operation of the admin site itself, but also includes other general documentation about Django filters for Django templates. More importantly, the Django admin site documentation app introspects the source code for all installed project apps to present documentation on controller methods and model objects (i.e. documentation embedded in the source code of app models.py and views.py files).
 
 To install the Django admin site documentation app you first need to install the docutils Python package with the pip package manager executing the following command: pip install docutils. Once you install the docutils package, you can proceed to install the Django admin site documentation app as any other Django app.
 
@@ -217,7 +224,7 @@ Add the url to access the Django admin site documentation app. If you open the p
 
 Next, open the project's settings.py file and go to the INSTALLED_APPS variable. Near the final values in this variable add the line django.contrib.admindocs to enable the Django admin site documentation app.
 
-With the development web server running. Open a browser on the address http://127.0.0.1:8000/admin/doc/ and you should see a page like the one if figure 3.```
+With the development web server running. Open a browser on the address http://127.0.0.1:8000/admin/doc/ and you should see a page like the one if figure 3.``
 
 
 
